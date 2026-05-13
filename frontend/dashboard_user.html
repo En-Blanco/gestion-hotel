@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Usuario - Hotel En Blanco</title>
+    <link rel="stylesheet" href="css/style_dashboard_user.css">
+</head>
+<body>
+
+ 
+<header>
+    <div class="logo">
+        <img src="../assets/isologo.png" alt="En Blanco - Gestión Hotelera">
+    </div>
+
+    <nav>
+        <div class="nav-links">
+            <a href="index.html">Inicio</a>
+            <a href="#mis-reservas">Mis Reservas</a>
+            <a href="#servicios">Servicios</a>
+            <a href="index.html" class="btn-salir">Cerrar sesión</a>
+        </div>
+    </nav>
+</header>
+
+    <main class="contenedor-principal">
+        
+        <div class="bienvenida">
+            <h1>Bienvenido</h1>
+            <p>Gestiona tus reservas y servicios desde aquí.</p>
+        </div>
+
+<section class="tarjeta">
+    <div class="tarjeta-header">
+        <h3>Nueva Reserva</h3>
+    </div>
+    
+    <form class="formulario-reserva">
+        <div class="fila-fechas">
+            <div class="grupo-input">
+                <label>Check-in</label>
+                <input type="date">
+            </div>
+            <div class="grupo-input">
+                <label>Check-out</label>
+                <input type="date">
+            </div>
+        </div>
+
+        <label class="label-titulo">Selecciona una habitación:</label>
+        
+        <div class="contenedor-habitaciones">
+            <input type="radio" name="habitacion" id="hab-simple" checked>
+            <label for="hab-simple" class="item-habitacion">
+                <div class="imagen-box">
+                    <img src="../assets/Simple.png" alt="Simple">
+                </div>
+                <div class="detalle-box">
+                    <h4>Habitación Simple</h4>
+                    <p>Confort y practicidad para una estadía individual · 15m²</p>
+                    <span class="precio">$ 110.000/noche</span>
+                </div>
+            </label>
+
+            <input type="radio" name="habitacion" id="hab-doble">
+            <label for="hab-doble" class="item-habitacion">
+                <div class="imagen-box">
+                    <img src="../assets/Doble.png" alt="Doble">
+                </div>
+                <div class="detalle-box">
+                    <h4>Habitación Doble Standard</h4>
+                    <p>Espacio ideal para compartir y relajarse · 22m²</p>
+                    <span class="precio">$140.000/noche</span>
+                </div>
+            </label>
+
+            <input type="radio" name="habitacion" id="hab-suite">
+            <label for="hab-suite" class="item-habitacion">
+                <div class="imagen-box">
+                    <img src="../assets/Suite.png" alt="Suite">
+                </div>
+                <div class="detalle-box">
+                    <h4>Suite Ejecutiva - Vista al Parque</h4>
+                    <p>Elegancia, amplitud y una experiencia premium · 40m² · AC</p>
+                    <span class="precio">$180.000/noche</span>
+                </div>
+            </label>
+        </div>
+
+        <button type="button" class="btn-primario">Confirmar Selección</button>
+    </form>
+</section>
+<section class="tarjeta" id="servicios">
+    <div class="tarjeta-header">
+        <h3>Servicios</h3>
+    </div>
+
+    <div class="contenedor-servicios">
+        <div class="item-servicio">
+            <h4>Desayuno</h4>
+            <p>Agregá desayuno a tu reserva.</p>
+            <button type="button" class="btn-servicio">Solicitar</button>
+        </div>
+
+        <div class="item-servicio">
+            <h4>Limpieza</h4>
+            <p>Pedí limpieza adicional para tu habitación.</p>
+            <button type="button" class="btn-servicio">Solicitar</button>
+        </div>
+
+        <div class="item-servicio">
+            <h4>Estacionamiento</h4>
+            <p>Reservá un lugar para tu vehículo.</p>
+            <button type="button" class="btn-servicio">Solicitar</button>
+        </div>
+
+        <div class="item-servicio">
+            <h4>Salas comunes</h4>
+            <p>Consultá disponibilidad de espacios compartidos.</p>
+            <button type="button" class="btn-servicio">Ver disponibilidad</button>
+        </div>
+    </div>
+    <button type="button" class="btn-primario">Ver Resumen Total</button>
+</section>
+<section class="tarjeta resumen-reserva" id="mis-reservas">
+    <div class="tarjeta-header">
+        <h3>Resumen de Reserva</h3>
+    </div>
+
+    <div class="detalle-resumen">
+        <p><strong>Habitación:</strong> Suite Ejecutiva</p>
+        <p><strong>Servicios:</strong> Desayuno + Estacionamiento</p>
+        <p><strong>Total estimado:</strong> $220.000</p>
+    </div>
+
+    <button type="button" class="btn-primario">Confirmar Reserva</button>
+</section>
+    </main>
+
+    <footer class="footer-simple">
+        <p>© 2026 En Blanco - Gestión Hotelera. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
