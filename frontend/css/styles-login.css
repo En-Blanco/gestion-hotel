@@ -1,0 +1,272 @@
+/* RESET */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+
+body{
+    font-family: Arial, sans-serif;
+
+    background-color: rgb(223 223 223 / 83%);
+
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* TITULO OCULTO */
+
+.hidden-title{
+    position: absolute;
+
+    left: -9999px;
+}
+
+/* CONTENEDOR LOGIN */
+
+.login-container{
+    flex: 1;
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 40px 20px;
+}
+
+/* TARJETA */
+
+.login-card{
+    background-color: white;
+
+    width: 350px;
+
+    padding: 30px;
+
+    border-radius: 10px;
+
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+}
+
+/* HEADER */
+
+.login-header{
+    text-align: center;
+
+    margin-bottom: 20px;
+}
+
+/* LOGO */
+
+.logo{
+    width: 190px;
+
+    margin-bottom: 10px;
+}
+
+/* TEXTO */
+
+.login-header p{
+    color: rgb(1 60 98);
+
+    font-size: 14px;
+}
+
+/* FORM */
+
+.login-form{
+    display: flex;
+
+    flex-direction: column;
+}
+
+/* INPUT GROUP */
+
+.input-group{
+    display: flex;
+
+    flex-direction: column;
+
+    margin-bottom: 15px;
+}
+
+.input-group label{
+    margin-bottom: 5px;
+
+    color: rgb(1 60 98);
+
+    font-weight: bold;
+
+    font-size: 14px;
+}
+
+/* INPUTS Y SELECT */
+
+.input-group input,
+.input-group select{
+    padding: 10px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 5px;
+
+    font-size: 14px;
+
+    outline: none;
+}
+
+/* RECUPERAR */
+
+.options{
+    text-align: center;
+
+    margin-bottom: 15px;
+}
+
+.options a{
+    text-decoration: none;
+
+    color: rgb(1 60 98);
+
+    font-size: 12px;
+}
+
+.options a:hover{
+    text-decoration: underline;
+}
+
+/* BOTON */
+
+.login-btn{
+    background-color: rgb(1 60 98);
+
+    color: white;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    transition: 0.3s;
+}
+
+.login-btn:hover{
+    background-color: rgb(3, 85, 138);
+}
+
+/* REGISTRO */
+
+.register-link{
+    text-align: center;
+
+    margin-top: 18px;
+}
+
+.register-link p{
+    font-size: 14px;
+}
+
+.register-link a{
+    text-decoration: none;
+
+    color: rgb(1 60 98);
+
+    font-weight: bold;
+}
+
+/* FOOTER */
+
+.footer{
+    width: 100%;
+
+    background-color: rgb(1 60 98);
+
+    padding: 25px 30px;
+}
+
+.footer-content{
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+}
+
+/* COLUMNAS */
+
+.footer-contacto,
+.footer-redes{
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+/* TITULOS */
+
+.footer h2{
+    color: white;
+
+    font-size: 18px;
+
+    margin-bottom: 5px;
+}
+
+/* LINKS */
+
+.footer a{
+    text-decoration: none;
+
+    color: white;
+
+    font-size: 14px;
+}
+
+/* COPYRIGHT */
+
+.footer-copy p{
+    color: white;
+
+    font-size: 14px;
+
+    text-align: right;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+    .footer-content{
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 20px;
+    }
+
+    .footer-copy p{
+        text-align: left;
+    }
+
+    .login-card{
+        width: 100%;
+        max-width: 350px;
+    }
+}
