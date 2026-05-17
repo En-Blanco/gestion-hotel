@@ -55,13 +55,13 @@ Actualmente, el proyecto se encuentra en su fase inicial de maquetación.
 ### 1️⃣ Clonar el repositorio
 
 ```bash
-git clone https://github.com/En-Blanco/nombre-del-repo.git
+git clone https://github.com/En-Blanco/gestion-hotel.git
 ```
 
 ### 2️⃣ Acceder a la carpeta del proyecto
 
 ```bash
-cd nombre-del-repo
+cd gestion-hotel
 ```
 
 ### 3️⃣ Ejecutar la maqueta
