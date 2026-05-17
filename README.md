@@ -1,75 +1,98 @@
-# Gestión de hotel
+# 🏨 Gestión de Hotel - Proyecto Tecnológico
 
-## Flujo de trabajo con Git (main / develop / feature)
-
-### Estrategia de ramas
-
-- **main** → Código estable listo para entrega o producción
-- **develop** → Integración de desarrollos
-- **feature/*** → Nuevas funcionalidades
+Este proyecto ha sido desarrollado como parte de la **Evidencia de Aprendizaje I** para el módulo **Full Stack I (2026)**.  
+Integra conocimientos de las unidades curriculares de **Programación II** y **Modelado y Arquitectura de Software**.
 
 ---
 
-### Flujo de trabajo
+## 📝 Introducción y Propósito
 
-1. Cambiar a la rama `develop` y actualizarla:
+El sistema de **Gestión de Hotel** nace de la necesidad de modernizar la administración en hoteles pequeños y medianos, los cuales suelen operar mediante procesos manuales o sistemas ineficientes.
 
-```bash
-git checkout develop
-git pull origin develop
-```
+Esta falta de digitalización conlleva errores comunes como:
 
-2. Crear una rama nueva para la funcionalidad:
+- Duplicación de reservas.
+- Dificultades para visualizar la disponibilidad en tiempo real.
+- Ausencia de métricas para la toma de decisiones.
 
-```bash
-git checkout -b feature/nombre-feature
-```
-
-3. Desarrollar la funcionalidad y guardar los cambios:
-
-```bash
-git add .
-git commit -m "Descripción del cambio realizado"
-```
-
-4. Subir la rama al repositorio remoto:
-
-```bash
-git push origin feature/nombre-feature
-```
-
-5. Integrar la rama en `develop`:
-
-```bash
-git checkout develop
-git pull origin develop
-git merge feature/nombre-feature
-git push origin develop
-```
-
-6. Cuando `develop` esté lista, crear un **Pull Request hacia `main`**.
-
-7. El merge hacia `main` requiere aprobación de al menos **2 personas**.
+El propósito de esta aplicación web es centralizar la información y optimizar la operatividad hotelera, permitiendo una administración ágil y una mejora significativa en la experiencia del cliente final.
 
 ---
 
-### Control de calidad
+## ✨ Funcionalidades del Proyecto
 
-- No se permite hacer push directo a `main`
-- `develop` permite integración directa
-- `main` requiere Pull Request obligatorio
+El sistema ofrece una solución integral a través de las siguientes capacidades:
+
+### 📅 Gestión de Reservas
+
+Control de disponibilidad de habitaciones en tiempo real para evitar solapamientos y errores manuales.
+
+### 👤 Administración de Usuarios
+
+Sistema de roles diferenciados para:
+
+- **Administradores:** gestión total del hotel.
+- **Clientes:** consultas de disponibilidad y reservas.
+
+### 🛎️ Servicios Adicionales
+
+Gestión de servicios extra asociados a las reservas de cada huésped.
+
+### 📊 Panel de Consultas
+
+Acceso ágil a información relevante como datos personales e historial de reservas.
+
+### 📈 Métricas y Reportes
+
+Provisión de datos sobre niveles de ocupación y demanda para apoyar la toma de decisiones.
 
 ---
 
-### Reglas de aprobación
+## 🚀 Instalación y Ejecución (Maqueta)
 
-- Para `main`: mínimo 2 aprobaciones
-- No se permite merge sin revisión
+Actualmente, el proyecto se encuentra en su fase inicial de maquetación.
+
+### 1️⃣ Clonar el repositorio
+
+```bash
+git clone https://github.com/En-Blanco/gestion-hotel.git
+```
+
+### 2️⃣ Acceder a la carpeta del proyecto
+
+```bash
+cd gestion-hotel
+```
+
+### 3️⃣ Ejecutar la maqueta
+
+Al ser una versión inicial basada en componentes de frontend, puede visualizar el proyecto:
+
+- Abriendo el archivo `index.html` en cualquier navegador web moderno.
+- Utilizando la extensión **Live Server** en Visual Studio Code.
 
 ---
 
-### Objetivo
+## 👥 Equipo de Trabajo
 
-- Mantener estabilidad en `main`
-- Permitir desarrollo ágil en `develop`
-- Aplicar control de calidad antes de la entrega
+El desarrollo de este proyecto está a cargo de:
+
+- **Battista, Mariano Iván**
+- **Gatica, Pablo Emiliano**
+- **Gonzalez, Javier Alexis**
+- **Molina, Agustina**
+- **Murua Ayosa, Christian José**
+- **Ranieri, Marysol**
+
+### 📚 Docentes
+
+- **Ivana Córsico**
+- **Carolina Ahumada**
+
+---
+
+## 🔗 Organización en GitHub
+
+Para más información sobre el desarrollo y actualizaciones:
+
+👉 [En-Blanco](https://github.com/En-Blanco)
