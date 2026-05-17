@@ -1,98 +1,75 @@
-# 🏨 Gestión de Hotel - Proyecto Tecnológico
+# Gestión de hotel
 
-Este proyecto ha sido desarrollado como parte de la **Evidencia de Aprendizaje I** para el módulo **Full Stack I (2026)**.  
-Integra conocimientos de las unidades curriculares de **Programación II** y **Modelado y Arquitectura de Software**.
+## Flujo de trabajo con Git (main / develop / feature)
 
----
+### Estrategia de ramas
 
-## 📝 Introducción y Propósito
-
-El sistema de **Gestión de Hotel** nace de la necesidad de modernizar la administración en hoteles pequeños y medianos, los cuales suelen operar mediante procesos manuales o sistemas ineficientes.
-
-Esta falta de digitalización conlleva errores comunes como:
-
-- Duplicación de reservas.
-- Dificultades para visualizar la disponibilidad en tiempo real.
-- Ausencia de métricas para la toma de decisiones.
-
-El propósito de esta aplicación web es centralizar la información y optimizar la operatividad hotelera, permitiendo una administración ágil y una mejora significativa en la experiencia del cliente final.
+- **main** → Código estable listo para entrega o producción
+- **develop** → Integración de desarrollos
+- **feature/*** → Nuevas funcionalidades
 
 ---
 
-## ✨ Funcionalidades del Proyecto
+### Flujo de trabajo
 
-El sistema ofrece una solución integral a través de las siguientes capacidades:
-
-### 📅 Gestión de Reservas
-
-Control de disponibilidad de habitaciones en tiempo real para evitar solapamientos y errores manuales.
-
-### 👤 Administración de Usuarios
-
-Sistema de roles diferenciados para:
-
-- **Administradores:** gestión total del hotel.
-- **Clientes:** consultas de disponibilidad y reservas.
-
-### 🛎️ Servicios Adicionales
-
-Gestión de servicios extra asociados a las reservas de cada huésped.
-
-### 📊 Panel de Consultas
-
-Acceso ágil a información relevante como datos personales e historial de reservas.
-
-### 📈 Métricas y Reportes
-
-Provisión de datos sobre niveles de ocupación y demanda para apoyar la toma de decisiones.
-
----
-
-## 🚀 Instalación y Ejecución (Maqueta)
-
-Actualmente, el proyecto se encuentra en su fase inicial de maquetación.
-
-### 1️⃣ Clonar el repositorio
+1. Cambiar a la rama `develop` y actualizarla:
 
 ```bash
-git clone https://github.com/En-Blanco/gestion-hotel.git
+git checkout develop
+git pull origin develop
 ```
 
-### 2️⃣ Acceder a la carpeta del proyecto
+2. Crear una rama nueva para la funcionalidad:
 
 ```bash
-cd gestion-hotel
+git checkout -b feature/nombre-feature
 ```
 
-### 3️⃣ Ejecutar la maqueta
+3. Desarrollar la funcionalidad y guardar los cambios:
 
-Al ser una versión inicial basada en componentes de frontend, puede visualizar el proyecto:
+```bash
+git add .
+git commit -m "Descripción del cambio realizado"
+```
 
-- Abriendo el archivo `index.html` en cualquier navegador web moderno.
-- Utilizando la extensión **Live Server** en Visual Studio Code.
+4. Subir la rama al repositorio remoto:
+
+```bash
+git push origin feature/nombre-feature
+```
+
+5. Integrar la rama en `develop`:
+
+```bash
+git checkout develop
+git pull origin develop
+git merge feature/nombre-feature
+git push origin develop
+```
+
+6. Cuando `develop` esté lista, crear un **Pull Request hacia `main`**.
+
+7. El merge hacia `main` requiere aprobación de al menos **2 personas**.
 
 ---
 
-## 👥 Equipo de Trabajo
+### Control de calidad
 
-El desarrollo de este proyecto está a cargo de:
-
-- **Battista, Mariano Iván**
-- **Gatica, Pablo Emiliano**
-- **Gonzalez, Javier Alexis**
-- **Molina, Agustina**
-- **Murua Ayosa, Christian José**
-- **Ranieri, Marysol**
-
-### 📚 Docentes
-
-- **Ivana Córsico**
-- **Carolina Ahumada**
+- No se permite hacer push directo a `main`
+- `develop` permite integración directa
+- `main` requiere Pull Request obligatorio
 
 ---
 
-## 🔗 Organización en GitHub
+### Reglas de aprobación
 
-Para más información sobre el desarrollo y actualizaciones:
+- Para `main`: mínimo 2 aprobaciones
+- No se permite merge sin revisión
 
-👉 [En-Blanco](https://github.com/En-Blanco)
+---
+
+### Objetivo
+
+- Mantener estabilidad en `main`
+- Permitir desarrollo ágil en `develop`
+- Aplicar control de calidad antes de la entrega
