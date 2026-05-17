@@ -1,0 +1,617 @@
+﻿/* =====================
+   RESET Y BASE
+   ===================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #cfdee8;
+    font-family: Arial, sans-serif;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* =====================
+   HEADER
+   ===================== */
+header {
+    background: rgb(223 223 223 / 83%);
+    color: black;
+    padding: 10px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo img {
+    height: 80px;
+}
+
+.nav-links {
+    display: flex;
+    background-color: rgb(1 60 98);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    padding: 12px 22px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.nav-links a:not(:last-child) {
+    border-right: 1px solid rgba(247, 247, 247, 0.3);
+}
+
+.nav-links a:hover {
+    background-color: rgb(0, 45, 75);
+}
+
+.btn-salir {
+    background-color: #c0392b;
+}
+
+.btn-salir:hover {
+    background-color: #a93226 !important;
+}
+
+/* =====================
+   LAYOUT PRINCIPAL
+   ===================== */
+.layout {
+    display: flex;
+    flex: 1;
+    min-height: calc(100vh - 100px);
+}
+
+/* =====================
+   SIDEBAR
+   ===================== */
+.sidebar {
+    width: 240px;
+    min-width: 240px;
+    background: #013b64;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 0;
+    position: sticky;
+    top: 100px;
+    height: calc(100vh - 100px);
+    overflow-y: auto;
+}
+
+.admin-info {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 0 24px 28px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    margin-bottom: 20px;
+}
+
+.admin-avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #3498db;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.admin-nombre {
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.badge-rol {
+    background: #3498db;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 2px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0 12px;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.sidebar-link:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: white;
+}
+
+.sidebar-link.activo {
+    background: #3498db;
+    color: white;
+}
+
+/* =====================
+   CONTENIDO PRINCIPAL
+   ===================== */
+.contenido-admin {
+    flex: 1;
+    padding: 30px 40px;
+    max-width: 1100px;
+}
+
+.bienvenida {
+    color: #013b64;
+    margin-bottom: 30px;
+}
+
+.bienvenida h1 {
+    font-size: 28px;
+    margin-bottom: 6px;
+}
+
+.bienvenida p {
+    font-size: 15px;
+    color: #555;
+}
+
+/* =====================
+   TARJETA
+   ===================== */
+.tarjeta {
+    background: white;
+    padding: 28px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.tarjeta-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.tarjeta-header h3 {
+    color: #013b64;
+    font-size: 22px;
+}
+
+.periodo-label {
+    background: #f0f7ff;
+    color: #013b64;
+    border: 1px solid #c5dff5;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* =====================
+   BOTONES
+   ===================== */
+.btn-primario {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    transition: 0.2s;
+}
+
+.btn-primario:hover {
+    background-color: #2181c0;
+}
+
+.btn-pequeno {
+    width: auto;
+    padding: 9px 18px;
+    font-size: 14px;
+}
+
+.btn-tabla {
+    border: none;
+    padding: 7px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.btn-editar {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-editar:hover {
+    background-color: #2181c0;
+}
+
+.btn-editar:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+
+.btn-cancelar {
+    background-color: #c0392b;
+    color: white;
+}
+
+.btn-cancelar:hover {
+    background-color: #a93226;
+}
+
+.btn-cancelar:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+
+.btn-activar {
+    background-color: #27ae60;
+    color: white;
+}
+
+.btn-activar:hover {
+    background-color: #1e8449;
+}
+
+/* =====================
+   FILTROS
+   ===================== */
+.filtros {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.filtros input,
+.filtros select {
+    padding: 9px 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s;
+}
+
+.filtros input {
+    flex: 1;
+}
+
+.filtros input:focus,
+.filtros select:focus {
+    border-color: #3498db;
+}
+
+/* =====================
+   TABLA
+   ===================== */
+.tabla-contenedor {
+    overflow-x: auto;
+}
+
+.tabla {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.tabla thead tr {
+    background-color: #013b64;
+    color: white;
+}
+
+.tabla th {
+    padding: 12px 14px;
+    text-align: left;
+    font-weight: bold;
+    letter-spacing: 0.3px;
+}
+
+.tabla tbody tr {
+    border-bottom: 1px solid #eee;
+    transition: background 0.15s;
+}
+
+.tabla tbody tr:hover {
+    background-color: #f0f7ff;
+}
+
+.tabla td {
+    padding: 12px 14px;
+    vertical-align: middle;
+}
+
+.acciones {
+    display: flex;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+/* =====================
+   ESTADOS
+   ===================== */
+.estado {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.estado.confirmada {
+    background-color: #d4efdf;
+    color: #1e8449;
+}
+
+.estado.pendiente {
+    background-color: #fef9e7;
+    color: #b7950b;
+}
+
+.estado.cancelada {
+    background-color: #fadbd8;
+    color: #c0392b;
+}
+
+/* =====================
+   SELECT ROL
+   ===================== */
+.select-rol {
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 13px;
+    background: white;
+    color: #013b64;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    transition: 0.2s;
+}
+
+.select-rol:focus {
+    border-color: #3498db;
+}
+
+/* =====================
+   SERVICIOS ADMIN
+   ===================== */
+.servicios-admin-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.servicio-admin-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px 20px;
+    background: #f8f9fa;
+    transition: 0.2s;
+}
+
+.servicio-admin-item:hover {
+    border-color: #3498db;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.servicio-admin-info h4 {
+    color: #013b64;
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.servicio-admin-info p {
+    font-size: 13px;
+    color: #666;
+}
+
+.servicio-admin-acciones {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.badge-activo {
+    background: #d4efdf;
+    color: #1e8449;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+.badge-inactivo {
+    background: #fadbd8;
+    color: #c0392b;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+/* =====================
+   MÉTRICAS - GRID TARJETAS
+   ===================== */
+.metricas-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.metrica-card {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 22px 18px;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.metrica-card:hover {
+    border-color: #3498db;
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.15);
+}
+
+.metrica-icono {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.metrica-valor {
+    font-size: 30px;
+    font-weight: bold;
+    color: #013b64;
+    margin-bottom: 4px;
+}
+
+.metrica-label {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.metrica-sub {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.tendencia-pos {
+    color: #1e8449;
+}
+
+.tendencia-neg {
+    color: #c0392b;
+}
+
+.tendencia-neu {
+    color: #b7950b;
+}
+
+/* =====================
+   MÉTRICAS - BARRAS
+   ===================== */
+.metricas-detalle-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.metricas-detalle {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.metricas-detalle h4 {
+    color: #013b64;
+    font-size: 15px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.barra-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.barra-label {
+    width: 130px;
+    min-width: 130px;
+    font-size: 13px;
+    color: #444;
+    font-weight: bold;
+    text-align: right;
+}
+
+.barra-contenedor {
+    flex: 1;
+    background: #e0e0e0;
+    border-radius: 4px;
+    height: 22px;
+    overflow: hidden;
+}
+
+.barra-progreso {
+    height: 100%;
+    background: linear-gradient(90deg, #013b64, #3498db);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    min-width: 36px;
+    transition: width 0.4s ease;
+}
+
+.barra-simple {
+    background: linear-gradient(90deg, #2980b9, #5dade2);
+}
+
+.barra-doble {
+    background: linear-gradient(90deg, #1a6ca0, #3498db);
+}
+
+.barra-suite {
+    background: linear-gradient(90deg, #013b64, #1a6ca0);
+}
+
+/* =====================
+   FOOTER
+   ===================== */
+.footer-simple {
+    text-align: center;
+    color: #013b64;
+    padding: 30px 0;
+    font-size: 13px;
+    background: transparent;
+}
