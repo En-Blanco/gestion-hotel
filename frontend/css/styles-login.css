@@ -187,6 +187,45 @@ body{
 
     font-weight: bold;
 }
+/* BOTONES DE ROL */
+
+.role-buttons{
+    display:flex;
+
+    gap:10px;
+
+    margin-bottom:20px;
+}
+
+.role-btn{
+    flex:1;
+
+    background-color:rgb(1 60 98);
+
+    color:white;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:5px;
+
+    cursor:pointer;
+
+    font-size:14px;
+
+    transition:0.3s;
+
+    text-decoration: none;
+
+    text-align:center;
+
+    display: block;
+}
+
+.role-btn:hover{
+    background-color:rgb(3, 85, 138);
+}
 
 /* FOOTER */
 
