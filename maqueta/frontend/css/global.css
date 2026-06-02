@@ -1,6 +1,4 @@
-/* =====================
-RESET + BASE
-===================== */
+/* RESET + BASE */
 * {
     margin: 0;
     padding: 0;
@@ -12,9 +10,7 @@ body {
     background: var(--primary);
 }
 
-/* =====================
-VARIABLES (COLORES)
-===================== */
+/* VARIABLES (COLORES) */
 :root {
     --primary: #013b64;
     --secondary: #3498db;
@@ -22,9 +18,7 @@ VARIABLES (COLORES)
     --text-dark: #333;
 }
 
-/* =====================
-HEADER GLOBAL
-===================== */
+/* HEADER */
 header {
     background: var(--light-bg);
     color: black;
@@ -38,23 +32,12 @@ header {
     z-index: 100;
 }
 
+/* LOGO */
 .logo img {
     height: 80px;
 }
 
-nav a {
-    color: var(--primary);
-    margin: 10px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.2s;
-}
-
-nav a:hover {
-    opacity: 0.8;
-}
-
-/* NAV LINKS */
+/* NAV */
 .nav-links {
     display: flex;
     background-color: var(--primary);
@@ -65,6 +48,7 @@ nav a:hover {
 .nav-links a {
     color: white;
     padding: 12px 22px;
+    text-decoration: none;
     font-weight: bold;
 }
 
@@ -76,9 +60,58 @@ nav a:hover {
     background-color: rgb(0, 45, 75);
 }
 
-/* =====================
-BOTONES
-===================== */
+/* HAMBURGUESA (OCULTA EN DESKTOP) */
+.menu-icon {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+#menu-toggle {
+    display: none;
+    position: absolute;
+}
+
+/* VERSION MOBILE */
+@media (max-width: 930px) {
+
+    header {
+        flex-direction: row;
+        padding: 10px 20px;
+    }
+
+    .menu-icon {
+        display: block;
+        margin-left: auto;   
+    }
+
+    nav {
+        position: absolute;   
+        top: 100%;
+        left: 0;
+        width: 100%;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #menu-toggle:checked ~ nav .nav-links {
+        display: flex;
+    }
+
+    .nav-links a {
+        border-right: none;
+        border-bottom: 1px solid white;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+/* BOTONES */
 .btn, .btn-primario, button {
     background: var(--secondary);
     color: white;
@@ -95,9 +128,7 @@ button:hover {
     background: #2181c0;
 }
 
-/* =====================
-FOOTER GLOBAL
-===================== */
+/* FOOTER GLOBAL */
 footer {
     background: var(--light-bg);
     color: var(--text-dark);

@@ -1,6 +1,4 @@
-/* =====================
-   HERO
-   ===================== */
+/* HERO */
 .hero {
     position: relative;
     height: 420px;
@@ -42,7 +40,7 @@
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
 }
 
-.hero-text h2 {
+.hero-text h1 {
     font-size: 44px;
     margin-bottom: 10px;
     line-height: 1.2;
@@ -52,11 +50,18 @@
     font-size: 24px;
     line-height: 1.4;
 }
+/* Hero en mobile alineado de manera simetrica */
+@media (max-width: 900px) {
+    .hero-text {
+        width: 100%;
+        text-align: center;
+    }
+}
 
 /* Tarjeta CTA */
 .cta-box {
     background: rgb(227 226 226);
-    color: #013b64;
+    color: var(--primary);
     padding: 25px;
     border-radius: 12px;
     width: 280px;
@@ -79,24 +84,22 @@
     display: inline-block;
     margin-top: 12px;
     padding: 10px 15px;
-    background: #3498db;
+    background: var(--secondary);
     color: white;
     text-decoration: none;
     border-radius: 6px;
     font-weight: bold;
-    transition: background 0.2s;
+    transition: background-color 0.2s;
 }
 
 .cta-box .btn:hover {
     background: #2181c0;
 }
 
-/* =====================
-   FEATURES (FUNCIONALIDADES)
-   ===================== */
+/* FEATURES (FUNCIONALIDADES) */
 .features {
     padding: 30px 0 0 0;
-    background: #013b64;
+    background: var(--primary);
 }
 
 .features h2 {
@@ -110,7 +113,6 @@
 
 /* Fila: imagen + texto */
 .feature-row {
-    display: flex;
     align-items: stretch;
     width: 100%;
     min-height: 300px;
@@ -124,9 +126,7 @@
 }
 
 .feature-img {
-    width: 55%;
     overflow: hidden;
-    flex-shrink: 0;
 }
 
 .feature-img img {
@@ -137,8 +137,6 @@
 }
 
 .feature-text {
-    width: 45%;
-    padding: 50px 60px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -146,7 +144,7 @@
 
 .feature-text h3 {
     font-size: 28px;
-    color: #013b64;
+    color: var(--primary);
     margin-bottom: 20px;
 }
 
@@ -173,14 +171,11 @@
     border-bottom: none;
 }
 
-/* =====================
-   COLLAGE SERVICIOS
-   ===================== */
+/* COLLAGE SERVICIOS */
 .feature-img.collage {
     display: flex;
     flex-direction: row;
     gap: 3px;
-    background: #222;
 }
 
 .collage-main {
@@ -216,11 +211,9 @@
     display: block;
 }
 
-/* =====================
-   SECCIÓN ACCIÓN (CTA HUÉSPEDES)
-   ===================== */
+/* SECCIÓN ACCIÓN (CTA HUÉSPEDES) */
 .accion {
-    background: #013b64;
+    background: var(--primary);
     color: white;
     text-align: center;
     padding-top: 0px;
@@ -244,16 +237,17 @@
 .btn-accion {
     display: inline-block;
     padding: 14px 32px;
-    background: #3498db;
+    background: var(--secondary);
     color: white;
     text-decoration: none;
     border-radius: 8px;
     font-size: 18px;
     font-weight: bold;
-    transition: background 0.2s;
+    transition: background-color 0.2s;
 }
 
 .btn-accion:hover {
     background: #2181c0;
+    color: white;
 }
 
