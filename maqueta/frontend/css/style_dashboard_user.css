@@ -14,9 +14,7 @@ body {
 }
 
 .bienvenida {
-    color: #013b64;
-    margin-bottom: 30px;
-    text-align: center;
+    color: var(--primary);
 }
 
 
@@ -142,7 +140,7 @@ input[type="radio"]:checked+.item-habitacion::after {
 }
 
 .tarjeta-header h2 {
-    color: #013b64;
+    color: var(--primary);
     margin-bottom: 20px;
     font-size: 24px;
 }
@@ -160,8 +158,8 @@ input[type="radio"]:checked+.item-habitacion::after {
     background: #f8f9fa;
 }
 
-.item-servicio h4 {
-    color: #013b64;
+.item-servicio h3 {
+    color: var(--primary);
     margin-bottom: 8px;
 }
 
@@ -178,12 +176,4 @@ input[type="radio"]:checked+.item-habitacion::after {
 
 .btn-servicio:hover {
     background-color: #2181c0;
-}
-
-/* FOOTER */
-.footer-simple {
-    text-align: center;
-    color: #013b64;
-    padding: 40px 0;
-    font-size: 13px;
 }
