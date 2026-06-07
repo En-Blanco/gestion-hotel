@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
+    <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/styles_registro.css">
 </head>
 <body>
@@ -12,6 +14,12 @@
     <div class="logo">
         <img src="../assets/isologo.png" alt="En Blanco - Gestión Hotelera">
     </div>
+
+    <input type="checkbox" id="menu-toggle">
+
+    <label for="menu-toggle" class="menu-icon">
+        ☰
+    </label>
     <!-- NAV -->
     <nav>
         <div class="nav-links">
@@ -24,9 +32,9 @@
 <div class="contenedor">
     <div class="registro-box">
         <h1>Creá tu cuenta</h1>
-        <p>
+        <h2>
             Tus reservas de forma simple, rápida y segura.
-        </p>
+        </h2>
         <form>
             <label for="nombre">Nombre</label>
             <input type="text" id="nombre" name="nombre" placeholder="Ingresá tu nombre">
@@ -43,7 +51,7 @@
             <label for="confirmar">Confirmar contraseña</label>
             <input type="password" id="confirmar" name="confirmar" placeholder="Repetí tu contraseña">
 
-            <button type="submit" class="btn">
+            <button type="submit" class="register_btn">
                 Registrarse
             </button>
         </form>
@@ -58,20 +66,20 @@
 <!-- FOOTER -->
 <footer class="footer-content">
     <section class="footer-contacto">
-        <h4>Contacto</h4>
+        <h3>Contacto</h3>
         <a href="mailto:tucorreo@mail.com"> info@enblanco.com</a>
         <a href="tel:+540000000000"> +54 000 000-0000</a>
     </section>
 
     <section class="footer-redes">
-        <h4>Redes</h4>
+        <h3>Redes</h3>
         <a href="https://instagram.com" target="_blank"> Instagram</a>
         <a href="https://linkedin.com/in" target="_blank"> LinkedIn</a>
     </section>
 
-    <section class="footer-copy">
+    <div class="footer-copy">
         <p>© 2026 En Blanco - Gestión Hotelera. Todos los derechos reservados.</p>
-    </section>
+    </div>
     
 </footer>
 
