@@ -542,3 +542,277 @@
     font-size: 13px;
     background: transparent;
 }
+
+/* =====================
+   RESPONSIVE
+   ===================== */
+@media (max-width: 1200px) {
+    .contenido-admin {
+        max-width: 100%;
+        padding: 24px;
+    }
+
+    .tarjeta {
+        margin-bottom: 24px;
+    }
+
+    .metricas-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 930px) {
+    .layout {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-width: 0;
+        height: auto;
+        position: static;
+        top: auto;
+        padding: 16px 0;
+    }
+
+    .admin-info {
+        padding: 0 16px 16px 16px;
+        margin-bottom: 12px;
+    }
+
+    .sidebar-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 0 12px;
+    }
+
+    .sidebar-link {
+        flex: 1 1 calc(50% - 8px);
+        justify-content: center;
+        text-align: center;
+    }
+
+    .contenido-admin {
+        padding: 20px 16px;
+    }
+
+    .tarjeta {
+        padding: 18px;
+    }
+
+    .tarjeta-header h3 {
+        font-size: 20px;
+    }
+
+    .tarjeta-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .filtros {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .filtros input,
+    .filtros select {
+        width: 100%;
+    }
+
+    .tabla {
+        font-size: 13px;
+    }
+
+    .tabla th,
+    .tabla td {
+        padding: 10px 12px;
+    }
+
+    .servicio-admin-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .servicio-admin-acciones {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .metricas-detalle-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .barra-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .barra-label {
+        width: auto;
+        min-width: 0;
+        text-align: left;
+    }
+}
+
+@media (max-width: 640px) {
+    .contenido-admin {
+        padding: 16px 12px;
+    }
+
+    .bienvenida h1 {
+        font-size: 24px;
+    }
+
+    .bienvenida p {
+        font-size: 14px;
+    }
+
+    .tarjeta-header h3 {
+        font-size: 19px;
+    }
+
+    .tarjeta {
+        padding: 14px;
+        border-radius: 12px;
+    }
+
+    .periodo-label {
+        font-size: 12px;
+        padding: 4px 10px;
+    }
+
+    .sidebar-nav {
+        flex-direction: column;
+    }
+
+    .sidebar-link {
+        flex: 1 1 100%;
+        justify-content: flex-start;
+    }
+
+    .metricas-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .metrica-card {
+        padding: 16px 14px;
+    }
+
+    .metrica-icono {
+        font-size: 28px;
+    }
+
+    .metrica-valor {
+        font-size: 26px;
+    }
+
+    .metrica-label {
+        font-size: 12px;
+    }
+
+    .acciones {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .acciones .btn-tabla {
+        width: 100%;
+    }
+
+    .servicio-admin-acciones .btn-tabla {
+        flex: 1 1 calc(50% - 4px);
+        min-width: 120px;
+    }
+
+    .btn-pequeno {
+        width: 100%;
+    }
+}
+
+@media (max-width: 390px) {
+    .admin-info {
+        padding: 0 12px 12px 12px;
+        gap: 10px;
+    }
+
+    .admin-avatar {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .sidebar-link {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+
+    .contenido-admin {
+        padding: 14px 10px;
+    }
+
+    .bienvenida h1 {
+        font-size: 22px;
+    }
+
+    .tarjeta {
+        padding: 12px;
+        margin-bottom: 16px;
+    }
+
+    .tarjeta-header {
+        gap: 8px;
+        margin-bottom: 14px;
+    }
+
+    .tarjeta-header h3 {
+        font-size: 18px;
+    }
+
+    .metrica-card {
+        padding: 14px 12px;
+    }
+
+    .metrica-valor {
+        font-size: 22px;
+    }
+
+    .metrica-sub {
+        font-size: 11px;
+    }
+
+    .metricas-detalle {
+        padding: 14px;
+    }
+
+    .metricas-detalle h4 {
+        font-size: 14px;
+    }
+
+    .barra-contenedor {
+        height: 20px;
+    }
+
+    .tabla th,
+    .tabla td {
+        padding: 9px 10px;
+        font-size: 12px;
+    }
+
+    .btn-tabla,
+    .btn-pequeno {
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+
+    .servicio-admin-acciones .btn-tabla {
+        flex: 1 1 100%;
+        min-width: 0;
+    }
+}
