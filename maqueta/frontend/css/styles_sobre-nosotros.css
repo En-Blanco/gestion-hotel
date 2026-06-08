@@ -1,0 +1,20 @@
+.titulo-seccion {
+  color: var(--primary);
+}
+
+.foto-equipo {
+  width: 145px;
+  aspect-ratio: 3 / 4.2;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  border-radius: 15px;
+}
+
+.tarjeta-equipo {
+  transition: transform 0.5s ease;
+}
+
+.tarjeta-equipo:hover {
+  transform: scale(1.1);
+}

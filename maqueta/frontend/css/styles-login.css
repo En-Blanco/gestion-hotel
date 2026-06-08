@@ -1,0 +1,236 @@
+
+
+/* TITULO OCULTO */
+
+.hidden-title{
+    position: absolute;
+
+    left: -9999px;
+}
+
+/* CONTENEDOR LOGIN */
+
+.login-container{
+    flex: 1;
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 40px 20px;
+}
+
+/* TARJETA */
+
+.login-card{
+    background-color: white;
+
+    width: 350px;
+
+    padding: 30px;
+
+    border-radius: 10px;
+
+    box-shadow: 0px 0px 10px var(--light-bg);
+}
+
+/* HEADER */
+
+.login-header{
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    margin-bottom: 20px;
+
+    background-color: white;
+
+    box-shadow: none;        
+}
+
+/* LOGO */
+
+.logo{
+    width: 190px;
+
+    margin-bottom: 10px;
+}
+
+/* TEXTO */
+
+.login-header p{
+    color:var(--primary);
+
+    font-size: 14px;
+
+    margin-top: 10px;
+}
+
+/* FORM */
+
+.login-form{
+    display: flex;
+
+    flex-direction: column;
+}
+
+/* INPUT GROUP */
+
+.input-group{
+    display: flex;
+
+    flex-direction: column;
+
+    margin-bottom: 15px;
+}
+
+.input-group label{
+    margin-bottom: 5px;
+
+    color: rgb(1 60 98);
+
+    font-weight: bold;
+
+    font-size: 14px;
+}
+
+/* INPUTS Y SELECT */
+
+.input-group input,
+.input-group select{
+    padding: 10px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 5px;
+
+    font-size: 14px;
+
+    outline: none;
+}
+
+/* RECUPERAR */
+
+.options{
+    text-align: center;
+
+    margin-bottom: 15px;
+}
+
+.options a{
+    text-decoration: none;
+
+    color: rgb(1 60 98);
+
+    font-size: 12px;
+}
+
+.options a:hover{
+    text-decoration: underline;
+}
+
+/* BOTON */
+
+.login-btn{
+    background-color: var(--primary);
+
+    color: white;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    transition: 0.3s;
+}
+
+.login-btn:hover{
+    background-color: rgb(3, 85, 138);
+}
+
+/* REGISTRO */
+
+.register-link{
+    text-align: center;
+
+    margin-top: 18px;
+}
+
+.register-link p{
+    font-size: 14px;
+}
+
+.register-link a{
+    text-decoration: none;
+
+    color: rgb(1 60 98);
+
+    font-weight: bold;
+}
+/* BOTONES DE ROL */
+
+.role-buttons{
+    display:flex;
+
+    gap:10px;
+
+    margin-bottom:20px;
+}
+
+.role-btn{
+    flex:1;
+
+    background-color:var(--primary);
+
+    color:white;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:5px;
+
+    cursor:pointer;
+
+    font-size:14px;
+
+    transition:0.3s;
+
+    text-decoration: none;
+
+    text-align:center;
+
+    display: block;
+}
+
+.role-btn:hover{
+    background-color:rgb(3, 85, 138);
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+    .login-card{
+        width: 100%;
+        max-width: 350px;
+    }
+}
+
+
