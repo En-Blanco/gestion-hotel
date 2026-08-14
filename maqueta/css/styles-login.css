@@ -222,6 +222,13 @@
     background-color:rgb(3, 85, 138);
 }
 
+/* FOOTER */
+
+h2 {
+    font-size: 0.85em;
+    color: var(--primary);
+}
+
 
 /* RESPONSIVE */
 
