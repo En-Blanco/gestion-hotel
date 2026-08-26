@@ -1,1 +1,133 @@
-<p>login works!</p>
+<!-- TITULO PRINCIPAL OCULTO PARA VALIDACION -->
+
+<h1 class="hidden-title">
+    Sistema de Gestión Hotelera
+</h1>
+
+<!-- CONTENEDOR LOGIN -->
+
+<main class="login-container">
+
+    <!-- TARJETA -->
+
+    <section class="login-card">
+
+        <!-- HEADER -->
+
+        <header class="login-header">
+
+            <img src="assets/isologo.png" alt="Logo Hotel" class="logo">
+
+            <h2>Iniciá sesión para continuar</h2>
+
+        </header>
+
+        <!-- FORMULARIO -->
+
+        <form class="login-form">
+
+            <!-- EMAIL -->
+
+            <div class="input-group">
+
+                <label for="email">
+                    Correo electrónico
+                </label>
+
+                <input type="email" id="email" name="email" placeholder="Ingrese su correo" autocomplete="email">
+
+            </div>
+
+            <!-- PASSWORD -->
+
+            <div class="input-group">
+
+                <label for="password">
+                    Contraseña
+                </label>
+
+                <input type="password" id="password" name="password" placeholder="Ingrese su contraseña"
+                    autocomplete="current-password">
+
+            </div>
+
+            <!-- BOTONES ROL -->
+
+            <div class="role-buttons">
+
+                <button type="button" class="role-btn">
+
+                    Cliente
+
+                </button>
+
+                <button type="button" class="role-btn">
+
+                    Administrador
+
+                </button>
+
+            </div>
+
+            <!-- RECUPERAR -->
+
+            <div class="options">
+
+                <a routerLink="/recuperar-contraseña">
+                    ¿Olvidaste tu contraseña?
+                </a>
+
+            </div>
+
+            <!-- BOTON -->
+
+            <button type="submit" class="login-btn">
+
+                Ingresar
+
+            </button>
+
+        </form>
+
+        <!-- REGISTRO -->
+
+        <div class="register-link">
+
+            <p>
+                ¿No tenés cuenta?
+                <a routerLink="/registro">
+
+                    Registrarse
+                </a>
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer-content">
+    <section class="footer-contacto">
+        <h3>Contacto</h3>
+        <a href="mailto:tucorreo@mail.com">
+            info@enblanco.com
+        </a>
+        <a href="tel:+540000000000">
+            +54 000 000-0000
+        </a>
+    </section>
+
+    <section class="footer-redes">
+        <h3>Redes</h3>
+        <a href="https://instagram.com" target="_blank"> Instagram</a>
+        <a href="https://linkedin.com/in" target="_blank"> LinkedIn</a>
+    </section>
+
+    <div class="footer-copy">
+        <p>© 2026 En Blanco - Gestión Hotelera. Todos los derechos reservados.</p>
+    </div>
+
+
+</footer>
