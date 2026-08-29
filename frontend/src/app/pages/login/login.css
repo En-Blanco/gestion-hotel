@@ -223,13 +223,20 @@
     background-color:rgb(3, 85, 138);
 }
 
-/* FOOTER */
 
-h2 {
-    font-size: 0.85em;
-    color: var(--primary);
+.login-header h2 { 
+    font-size: 0.85em; 
+    color: var(--primary); 
 }
 
+/* RESPONSIVE */ 
+
+@media(max-width:768px){ 
+    .login-card{ 
+        width: 100%; 
+        max-width: 350px; 
+    } 
+}
 
 /* RESPONSIVE */
 
