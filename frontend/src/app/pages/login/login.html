@@ -24,7 +24,7 @@
 
         <!-- FORMULARIO -->
 
-        <form class="login-form">
+        <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
             <!-- EMAIL -->
 
@@ -34,7 +34,25 @@
                     Correo electrónico
                 </label>
 
-                <input type="email" id="email" name="email" placeholder="Ingrese su correo" autocomplete="email">
+                <input type="email" id="email" name="email" placeholder="Ingrese su correo" autocomplete="email"
+                    formControlName="email">
+                @if (
+                loginForm.controls.email.touched &&
+                loginForm.controls.email.hasError('required')
+                ) {
+                <small class="error-message">
+                    El correo electrónico es obligatorio.
+                </small>
+                }
+
+                @if (
+                loginForm.controls.email.touched &&
+                loginForm.controls.email.hasError('email')
+                ) {
+                <small class="error-message">
+                    Ingresá un correo electrónico válido.
+                </small>
+                }
 
             </div>
 
@@ -47,21 +65,29 @@
                 </label>
 
                 <input type="password" id="password" name="password" placeholder="Ingrese su contraseña"
-                    autocomplete="current-password">
+                    autocomplete="current-password" formControlName="password">
 
+                @if (
+                loginForm.controls.password.touched &&
+                loginForm.controls.password.hasError('required')
+                ) {
+                <small class="error-message">
+                    La contraseña es obligatoria.
+                </small>
+                }
             </div>
 
             <!-- BOTONES ROL -->
 
             <div class="role-buttons">
 
-                <button type="button" class="role-btn">
+                <button type="button" class="role-btn" (click)="seleccionarRol('cliente')">
 
                     Cliente
 
                 </button>
 
-                <button type="button" class="role-btn">
+                <button type="button" class="role-btn" (click)="seleccionarRol('administrador')">
 
                     Administrador
 
@@ -81,7 +107,7 @@
 
             <!-- BOTON -->
 
-            <button type="submit" class="login-btn">
+            <button type="submit" class="login-btn" (ngSubmit)="onSubmit()">
 
                 Ingresar
 

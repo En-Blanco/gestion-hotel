@@ -246,6 +246,12 @@
         width: 100%;
         max-width: 350px;
     }
+    
+}
+ .error-message {
+    color: #b00020;
+    font-size: 12px;
+    margin-top: 5px;
 }
 
 
