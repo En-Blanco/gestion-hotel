@@ -1,0 +1,130 @@
+<main class="contenedor-principal">
+
+    <div class="tarjeta bienvenida">
+        <h1>Bienvenido</h1>
+        <p>Gestiona tus reservas y servicios desde aquí.</p>
+    </div>
+
+    <section class="tarjeta">
+        <div class="tarjeta-header">
+            <h2>Nueva Reserva</h2>
+        </div>
+
+        <form class="formulario-reserva">
+            <div class="fila-fechas">
+                <div class="grupo-input">
+                    <label>Check-in</label>
+                    <input type="date">
+                </div>
+                <div class="grupo-input">
+                    <label>Check-out</label>
+                    <input type="date">
+                </div>
+            </div>
+
+            <label class="label-titulo">Selecciona una habitación:</label>
+
+            <div class="contenedor-habitaciones">
+                <input type="radio" name="habitacion" id="hab-simple" checked>
+                <label for="hab-simple" class="item-habitacion">
+                    <span class="imagen-box">
+                        <img src="assets/simple.jpg" alt="Simple">
+                    </span>
+                    <span class="detalle-box">
+                        <strong class="hab-titulo">Habitación Simple</strong>
+                        <span class="hab-desc">Confort y practicidad para una estadía individual · 15m²</span>
+                        <span class="precio">$ 110.000/noche</span>
+                    </span>
+                </label>
+
+                <input type="radio" name="habitacion" id="hab-doble">
+                <label for="hab-doble" class="item-habitacion">
+                    <span class="imagen-box">
+                        <img src="assets/doble.jpg" alt="Doble">
+                    </span>
+                    <span class="detalle-box">
+                        <strong class="hab-titulo">Habitación Doble Standard</strong>
+                        <span class="hab-desc">Espacio ideal para compartir y relajarse · 22m²</span>
+                        <span class="precio">$140.000/noche</span>
+                    </span>
+                </label>
+
+                <input type="radio" name="habitacion" id="hab-suite">
+                <label for="hab-suite" class="item-habitacion">
+                    <span class="imagen-box">
+                        <img src="assets/suite.jpg" alt="Suite">
+                    </span>
+                    <span class="detalle-box">
+                        <strong class="hab-titulo">Suite Ejecutiva - Vista al Parque</strong>
+                        <span class="hab-desc">Elegancia, amplitud y una experiencia premium · 40m² · AC</span>
+                        <span class="precio">$180.000/noche</span>
+                    </span>
+                </label>
+            </div>
+
+            <button type="button" class="btn-primario">Confirmar Selección</button>
+        </form>
+    </section>
+    <section class="tarjeta" id="servicios">
+        <div class="tarjeta-header">
+            <h2>Servicios</h2>
+        </div>
+
+        <div class="contenedor-servicios">
+            <div class="item-servicio">
+                <h3>Desayuno</h3>
+                <p>Agregá desayuno a tu reserva.</p>
+                <button type="button" class="btn-servicio">Solicitar</button>
+            </div>
+
+            <div class="item-servicio">
+                <h3>Limpieza</h3>
+                <p>Pedí limpieza adicional para tu habitación.</p>
+                <button type="button" class="btn-servicio">Solicitar</button>
+            </div>
+
+            <div class="item-servicio">
+                <h3>Estacionamiento</h3>
+                <p>Reservá un lugar para tu vehículo.</p>
+                <button type="button" class="btn-servicio">Solicitar</button>
+            </div>
+
+            <div class="item-servicio">
+                <h3>Salas comunes</h3>
+                <p>Consultá disponibilidad de espacios compartidos.</p>
+                <button type="button" class="btn-servicio">Ver disponibilidad</button>
+            </div>
+        </div>
+        <button type="button" class="btn-primario">Ver Resumen Total</button>
+    </section>
+    <section class="tarjeta resumen-reserva" id="mis-reservas">
+        <div class="tarjeta-header">
+            <h2>Resumen de Reserva</h2>
+        </div>
+
+        <div class="detalle-resumen">
+            <p><strong>Habitación:</strong> Suite Ejecutiva</p>
+            <p><strong>Servicios:</strong> Desayuno + Estacionamiento</p>
+            <p><strong>Total estimado:</strong> $220.000</p>
+        </div>
+
+        <button type="button" class="btn-primario">Confirmar Reserva</button>
+    </section>
+    <section class="tarjeta" id="comprobante">
+        <div class="tarjeta-header">
+            <h2>Reserva Confirmada</h2>
+        </div>
+
+        <div class="detalle-resumen">
+            <p><strong>N° de Reserva:</strong> #00123</p>
+            <p><strong>Habitación:</strong> Suite Ejecutiva</p>
+            <p><strong>Check-in:</strong> 10/07/2026</p>
+            <p><strong>Check-out:</strong> 15/07/2026</p>
+            <p><strong>Servicios:</strong> Desayuno + Estacionamiento</p>
+            <p><strong>Total:</strong> $220.000</p>
+        </div>
+
+        <p>Tu reserva fue registrada exitosamente. Recibirás un correo con los detalles.</p>
+    </section>
+
+</main>
