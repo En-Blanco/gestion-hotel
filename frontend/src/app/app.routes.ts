@@ -15,10 +15,10 @@ export const routes: Routes = [
     children: [
       { path: '', component: LandingPage },
       { path: 'dashboard-admin', component: DashboardAdmin },
-      { path: 'dashboard-user', component: DashboardUser },
-      { path: 'sobre-nosotros', component: SobreNosotros },
+      { path: 'sobre-nosotros', component: SobreNosotros }
     ],
   },
+  { path: 'dashboard-user', component: DashboardUser },
   { path: 'registro', component: Registro},
   { path: 'login', component: Login },
   { path: '**', component: Pagina404 },
