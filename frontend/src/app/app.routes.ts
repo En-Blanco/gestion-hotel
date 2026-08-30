@@ -7,7 +7,6 @@ import { Login } from './pages/login/login';
 import { Registro } from './pages/registro/registro';
 import { Layout } from './components/layout/layout';
 
-
 export const routes: Routes = [
   {
     path: '',
