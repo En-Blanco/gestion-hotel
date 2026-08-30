@@ -1,9 +1,7 @@
 # 🏨 Gestión de Hotel - Proyecto Tecnológico
 
-Este proyecto ha sido desarrollado como parte de la **Evidencia de Aprendizaje I** para el módulo **Full Stack I (2026)**.  
+Este proyecto ha sido desarrollado para el módulo **Full Stack I (2026)**.  
 Integra conocimientos de las unidades curriculares de **Programación II** y **Modelado y Arquitectura de Software**.
-
----
 
 ## 📝 Introducción y Propósito
 
@@ -48,9 +46,12 @@ Provisión de datos sobre niveles de ocupación y demanda para apoyar la toma de
 
 ---
 
-## 🚀 Instalación y Ejecución (Maqueta)
+## Prerequisitos Técnicos
 
-Actualmente, el proyecto se encuentra en su fase inicial de maquetación.
+Para poder hacer uso de este proyecto se necesita contar con [NodeJS](https://nodejs.org/es/) en el sistema, siendo la versión con la que se está trabajando actualmente la v24.20.0.
+Además, este proyecto utiliza [Angular CLI](https://github.com/angular/angular-cli) version 22.1.5.
+
+## Instalación y Ejecución
 
 ### 1️⃣ Clonar el repositorio
 
@@ -64,12 +65,21 @@ git clone https://github.com/En-Blanco/gestion-hotel.git
 cd gestion-hotel
 ```
 
-### 3️⃣ Ejecutar la maqueta
+### 3️⃣ Pararse sobre la carpeta frontend
 
-Al ser una versión inicial basada en componentes de frontend, puede visualizar el proyecto:
+```bash
+cd frontend
+```
 
-- Abriendo el archivo `index.html` en cualquier navegador web moderno.
-- Utilizando la extensión **Live Server** en Visual Studio Code.
+### Servidor de Desarrollo
+
+Para arrancar el servidor de desarrollo local se utiliza el comando:
+
+```bash
+ng serve
+```
+
+Y una vez que esté andando hay que usar la dirección `http://localhost:4200/` dentro del navegador.
 
 ---
 

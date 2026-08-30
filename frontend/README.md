@@ -80,3 +80,29 @@ ng serve
 ```
 
 Y una vez que esté andando hay que usar la dirección `http://localhost:4200/` dentro del navegador.
+
+---
+
+## 👥 Equipo de Trabajo
+
+El desarrollo de este proyecto está a cargo de:
+
+- **Battista, Mariano Iván**
+- **Gatica, Pablo Emiliano**
+- **Gonzalez, Javier Alexis**
+- **Molina, Agustina**
+- **Murua Ayosa, Christian José**
+- **Ranieri, Marysol**
+
+### 📚 Docentes
+
+- **Ivana Córsico**
+- **Carolina Ahumada**
+
+---
+
+## 🔗 Organización en GitHub
+
+Para más información sobre el desarrollo y actualizaciones:
+
+👉 [En-Blanco](https://github.com/En-Blanco)
