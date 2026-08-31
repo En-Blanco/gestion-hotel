@@ -1,0 +1,7 @@
+.navbar-nav .nav-link.active {
+  background-color: rgb(0, 45, 75) !important;
+}
+
+.navbar-collapse {
+  transition: height 0.2s ease-in-out;
+}

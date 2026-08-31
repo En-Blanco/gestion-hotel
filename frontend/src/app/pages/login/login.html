@@ -1,0 +1,134 @@
+<!-- TITULO PRINCIPAL OCULTO PARA VALIDACION -->
+
+<h1 class="hidden-title">
+    Sistema de Gestión Hotelera
+</h1>
+
+<!-- CONTENEDOR LOGIN -->
+
+<main class="login-container">
+
+    <!-- TARJETA -->
+
+    <section class="login-card">
+
+        <!-- HEADER -->
+
+        <header class="login-header">
+
+            <img src="assets/isologo.png" alt="Logo Hotel" class="logo">
+
+            <h2>Iniciá sesión para continuar</h2>
+
+        </header>
+
+        <!-- FORMULARIO -->
+
+        <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+            <!-- EMAIL -->
+
+            <div class="input-group">
+
+                <label for="email">
+                    Correo electrónico
+                </label>
+
+                <input type="email" id="email" name="email" placeholder="Ingrese su correo" autocomplete="email"
+                    formControlName="email">
+                @if (
+                loginForm.controls.email.touched &&
+                loginForm.controls.email.hasError('required')
+                ) {
+                <small class="error-message">
+                    El correo electrónico es obligatorio.
+                </small>
+                }
+
+                @if (
+                loginForm.controls.email.touched &&
+                loginForm.controls.email.hasError('email')
+                ) {
+                <small class="error-message">
+                    Ingresá un correo electrónico válido.
+                </small>
+                }
+
+            </div>
+
+            <!-- PASSWORD -->
+
+            <div class="input-group">
+
+                <label for="password">
+                    Contraseña
+                </label>
+
+                <input type="password" id="password" name="password" placeholder="Ingrese su contraseña"
+                    autocomplete="current-password" formControlName="password">
+
+                @if (
+                loginForm.controls.password.touched &&
+                loginForm.controls.password.hasError('required')
+                ) {
+                <small class="error-message">
+                    La contraseña es obligatoria.
+                </small>
+                }
+            </div>
+
+            <!-- BOTONES ROL -->
+
+            <div class="role-buttons">
+
+                <button type="button" class="role-btn" (click)="seleccionarRol('cliente')">
+
+                    Cliente
+
+                </button>
+
+                <button type="button" class="role-btn" (click)="seleccionarRol('administrador')">
+
+                    Administrador
+
+                </button>
+
+            </div>
+
+            <!-- RECUPERAR -->
+
+            <div class="options">
+
+                <a routerLink="/recuperar-contraseña">
+                    ¿Olvidaste tu contraseña?
+                </a>
+
+            </div>
+
+            <!-- BOTON -->
+
+            <button type="submit" class="login-btn" (ngSubmit)="onSubmit()">
+
+                Ingresar
+
+            </button>
+
+        </form>
+
+        <!-- REGISTRO -->
+
+        <div class="register-link">
+
+            <p>
+                ¿No tenés cuenta?
+                <a routerLink="/registro">
+
+                    Registrarse
+                </a>
+            </p>
+
+        </div>
+
+    </section>
+
+</main>

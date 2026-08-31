@@ -151,9 +151,9 @@
     margin-bottom: 20px;
 }
 
-.tarjeta-header h3 {
+.tarjeta-header h2 {
     color: #013b64;
-    font-size: 22px;
+    font-size: 1.375em;
 }
 
 .periodo-label {
@@ -364,9 +364,9 @@
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
-.servicio-admin-info h4 {
+.servicio-admin-info h3 {
     color: #013b64;
-    font-size: 15px;
+    font-size: 0.9375em;
     margin-bottom: 4px;
 }
 
@@ -474,9 +474,9 @@
     padding: 20px;
 }
 
-.metricas-detalle h4 {
+.metricas-detalle h3 {
     color: #013b64;
-    font-size: 15px;
+    font-size: 0.9375em;
     margin-bottom: 16px;
     padding-bottom: 10px;
     border-bottom: 1px solid #ddd;
@@ -561,6 +561,16 @@
     }
 }
 
+@media (max-width: 1100px) {
+    .sidebar {
+        display: none;
+    }
+
+    .contenido-admin {
+        max-width: 100%;
+    }
+}
+
 @media (max-width: 930px) {
     .layout {
         flex-direction: column;
@@ -602,8 +612,8 @@
         padding: 18px;
     }
 
-    .tarjeta-header h3 {
-        font-size: 20px;
+    .tarjeta-header h2 {
+        font-size: 1.25em;
     }
 
     .tarjeta-header {
@@ -674,8 +684,8 @@
         font-size: 14px;
     }
 
-    .tarjeta-header h3 {
-        font-size: 19px;
+    .tarjeta-header h2 {
+        font-size: 1.1875em;
     }
 
     .tarjeta {
@@ -771,8 +781,8 @@
         margin-bottom: 14px;
     }
 
-    .tarjeta-header h3 {
-        font-size: 18px;
+    .tarjeta-header h2 {
+        font-size: 1.125em;
     }
 
     .metrica-card {
@@ -791,8 +801,8 @@
         padding: 14px;
     }
 
-    .metricas-detalle h4 {
-        font-size: 14px;
+    .metricas-detalle h3 {
+        font-size: 0.875em;
     }
 
     .barra-contenedor {

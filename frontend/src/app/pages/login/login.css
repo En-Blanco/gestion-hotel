@@ -62,6 +62,7 @@
 
 .logo{
     width: 190px;
+    max-width: 100%;
 
     margin-bottom: 10px;
 }
@@ -223,6 +224,20 @@
 }
 
 
+.login-header h2 { 
+    font-size: 0.85em; 
+    color: var(--primary); 
+}
+
+/* RESPONSIVE */ 
+
+@media(max-width:768px){ 
+    .login-card{ 
+        width: 100%; 
+        max-width: 350px; 
+    } 
+}
+
 /* RESPONSIVE */
 
 @media(max-width:768px){
@@ -231,6 +246,12 @@
         width: 100%;
         max-width: 350px;
     }
+    
+}
+ .error-message {
+    color: #b00020;
+    font-size: 12px;
+    margin-top: 5px;
 }
 
 
