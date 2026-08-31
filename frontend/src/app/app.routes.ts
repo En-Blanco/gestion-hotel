@@ -14,11 +14,11 @@ export const routes: Routes = [
     component: Layout,
     children: [
       { path: '', component: LandingPage },
-      { path: 'dashboard-admin', component: DashboardAdmin },
       { path: 'sobre-nosotros', component: SobreNosotros }
     ],
   },
   { path: 'dashboard-user', component: DashboardUser },
+  { path: 'dashboard-admin', component: DashboardAdmin },
   { path: 'registro', component: Registro},
   { path: 'login', component: Login },
   { path: '**', component: Pagina404 },
