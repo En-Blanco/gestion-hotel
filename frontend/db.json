@@ -1,0 +1,46 @@
+{
+    "equipo": [
+        {
+            "id": "1",
+            "apellido": "Battista",
+            "nombre": "Mariano Iván",
+            "foto": "/sobre-nosotros/Battista_Mariano_foto.png",
+            "githubUrl": "https://github.com/Mariano-Battista"
+        },
+        {
+            "id": "2",
+            "apellido": "Gatica",
+            "nombre": "Pablo Emiliano",
+            "foto": "/sobre-nosotros/Gatica_Pablo_foto.png",
+            "githubUrl": "https://github.com/gatica489-dotcom"
+        },
+        {
+            "id": "3",
+            "apellido": "Gonzalez",
+            "nombre": "Javier Alexis",
+            "foto": "/sobre-nosotros/Gonzalez_Javier_foto.png",
+            "githubUrl": "https://github.com/Javier4286"
+        },
+        {
+            "id": "4",
+            "apellido": "Molina",
+            "nombre": "Agustina",
+            "foto": "/sobre-nosotros/Molina_Agustina_foto.png",
+            "githubUrl": "https://github.com/AgusMolina"
+        },
+        {
+            "id": "5",
+            "apellido": "Murua Ayosa",
+            "nombre": "Christian",
+            "foto": "/sobre-nosotros/Murua_Ayosa_Christian_foto.png",
+            "githubUrl": "https://github.com/cristianmurua18"
+        },
+        {
+            "id": "6",
+            "apellido": "Ranieri",
+            "nombre": "Marysol",
+            "foto": "/sobre-nosotros/Ranieri_Marysol_foto.png",
+            "githubUrl": "https://github.com/Marysol-web"
+        }
+    ]
+}
