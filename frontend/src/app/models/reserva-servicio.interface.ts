@@ -1,4 +1,5 @@
 export interface ReservaServicio {
-  id_reserva: number;
+  id?: string;
+  id_reserva: string;
   id_servicio: number;
 }

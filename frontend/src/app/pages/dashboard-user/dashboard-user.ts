@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { DashboardHeader } from '../../components/header-dashboard/header-dashboard';
 import { Footer } from '../../components/footer/footer';
+import { ReservaServicioService } from '../../services/reserva-servicio.service';
 import { ReservaService } from '../../services/reserva.service';
 import { Reserva } from '../../models/reserva.interface';
 import { HabitacionService } from '../../services/habitacion.service';
@@ -11,6 +12,8 @@ import { Habitacion } from '../../models/habitacion.interface';
 import { Servicio } from '../../models/servicio.interface';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard-user',
@@ -30,6 +33,7 @@ export class DashboardUser implements OnInit {
   mostrarComprobante = false;
 
   habitacionSeleccionada: Habitacion | null = null;
+  reservaCreada: Reserva | null = null;
 
   fechaCheckIn = '';
   fechaCheckOut = '';
@@ -39,7 +43,10 @@ export class DashboardUser implements OnInit {
   constructor(
     private habitacionService: HabitacionService,
     private servicioService: ServicioService,
-    private reservaService: ReservaService
+    private reservaService: ReservaService,
+    private reservaServicioService: ReservaServicioService,
+    private cdr: ChangeDetectorRef
+    
   ) {}
 
   ngOnInit(): void {
@@ -116,30 +123,31 @@ export class DashboardUser implements OnInit {
     });
   }
 
-buscarDisponibilidad(): void {
+  buscarDisponibilidad(): void {
 
-  if (
-    !this.fechaCheckIn ||
-    !this.fechaCheckOut
-  ) {
+    if (
+      !this.fechaCheckIn ||
+      !this.fechaCheckOut
+    ) {
 
-    alert(
-      'Debe seleccionar fecha de ingreso y egreso'
-    );
+      alert(
+        'Debe seleccionar fecha de ingreso y egreso'
+      );
 
-    return;
+      return;
+
+    }
+
+    this.habitacionesDisponibles =
+      this.habitaciones.filter(
+        habitacion =>
+          this.estaDisponible(habitacion)
+      );
+
+    this.mostrarHabitaciones = true;
 
   }
 
-  this.habitacionesDisponibles =
-    this.habitaciones.filter(
-      habitacion =>
-        this.estaDisponible(habitacion)
-    );
-
-  this.mostrarHabitaciones = true;
-
-}
   estaDisponible(
     habitacion: Habitacion
   ): boolean {
@@ -215,9 +223,93 @@ buscarDisponibilidad(): void {
 
   }
 
- confirmarReserva(): void {
+  confirmarReserva(): void {
+  
+  if (!this.habitacionSeleccionada) {
+    console.log('CLICK RESERVA'); //borrar
 
-    this.mostrarComprobante = true;
+    alert(
+      'Debe seleccionar una habitación'
+    );
+
+    return;
+
+  }
+
+  const reserva: Reserva = {
+
+    dni: '12345678', //dni: this.usuarioLogueado.dni
+    numero:
+      this.habitacionSeleccionada.numero,
+
+    fecha_reserva:
+      new Date()
+        .toISOString()
+        .split('T')[0],
+
+    checkin: this.fechaCheckIn,
+    checkout: this.fechaCheckOut,
+    estado: 'Confirmada'
+
+  };
+
+  this.reservaService
+    .crearReserva(reserva)
+    .subscribe({
+
+    next: (data) => {
+
+      this.reservaCreada = data;
+
+      this.serviciosSeleccionados.forEach(
+        servicio => {
+
+          this.reservaServicioService
+            .crearRelacion({
+
+              id_reserva: data.id!,
+
+              id_servicio:
+                servicio.id_servicio
+
+            })
+
+            .subscribe({
+
+              next: () => {
+
+                console.log(
+                  `Servicio ${servicio.nombre} asociado a la reserva`
+                );
+
+              },
+
+              error: (err) => {
+
+                console.error(
+                  'Error al asociar servicio:',
+                  err
+                );
+
+              }
+
+            });
+
+        }
+      );
+
+      this.mostrarComprobante = true;
+
+      this.cdr.detectChanges();
+
+      console.log(
+        'mostrarComprobante:',
+        this.mostrarComprobante
+      );
+
+    }
+
+    });
 
   }
 
@@ -242,23 +334,23 @@ buscarDisponibilidad(): void {
 
   this.calcularTotal();
 
-}
-obtenerCantidadNoches(): number {
-
-  if (!this.fechaCheckIn || !this.fechaCheckOut) {
-    return 0;
   }
+  obtenerCantidadNoches(): number {
 
-  const ingreso = new Date(this.fechaCheckIn);
-  const salida = new Date(this.fechaCheckOut);
+    if (!this.fechaCheckIn || !this.fechaCheckOut) {
+      return 0;
+    }
 
-  const diferencia =
-    salida.getTime() - ingreso.getTime();
+    const ingreso = new Date(this.fechaCheckIn);
+    const salida = new Date(this.fechaCheckOut);
 
-  return Math.ceil(
-    diferencia / (1000 * 60 * 60 * 24)
-  );
+    const diferencia =
+      salida.getTime() - ingreso.getTime();
 
-}
+    return Math.ceil(
+      diferencia / (1000 * 60 * 60 * 24)
+    );
+
+  }
 
 }

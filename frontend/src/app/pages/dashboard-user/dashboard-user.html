@@ -179,8 +179,13 @@
 
         </p>
         <p>
-         <strong>Noches:</strong>
-         {{ obtenerCantidadNoches() }}
+            <strong>Check-in:</strong>
+            {{ fechaCheckIn }}
+        </p>
+
+        <p>
+            <strong>Check-out:</strong>
+            {{ fechaCheckOut }}
         </p>
         
         <p>
@@ -194,7 +199,7 @@
                     track servicio.id_servicio
                 ) {
 
-                    {{ servicio.nombre }}
+                    <p>- {{ servicio.nombre }} </p>
 
                 }
 
@@ -240,32 +245,61 @@
 
             <p>
                 <strong>N° de Reserva:</strong>
-                #00123
+                {{ reservaCreada?.id }}
             </p>
 
             <p>
                 <strong>Habitación:</strong>
-                Suite Ejecutiva
+
+                @if (habitacionSeleccionada) {
+
+                    {{ habitacionSeleccionada.tipo }}
+
+                }
+
             </p>
 
             <p>
                 <strong>Check-in:</strong>
-                10/07/2026
+                {{ reservaCreada?.checkin }}
             </p>
 
             <p>
                 <strong>Check-out:</strong>
-                15/07/2026
+                {{ reservaCreada?.checkout }}
             </p>
 
             <p>
                 <strong>Servicios:</strong>
-                Desayuno + Estacionamiento
+
+                @if (serviciosSeleccionados.length > 0) {
+
+                    <ul>
+
+                        @for (
+                            servicio of serviciosSeleccionados;
+                            track servicio.id_servicio
+                        ) {
+
+                            <li>
+                                {{ servicio.nombre }}
+                            </li>
+
+                        }
+
+                    </ul>
+
+                } @else {
+
+                    Ninguno
+
+                }
+
             </p>
 
             <p>
                 <strong>Total:</strong>
-                $220.000
+                ${{ totalReserva }}
             </p>
 
         </div>
@@ -275,6 +309,8 @@
         </p>
 
     </section>
+
+
 
     }
 
