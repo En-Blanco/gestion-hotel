@@ -20,17 +20,18 @@ export class DashboardUser implements OnInit {
 
   habitaciones: Habitacion[] = [];
   servicios: Servicio[] = [];
+  serviciosSeleccionados: Servicio[] = [];
 
   mostrarHabitaciones = false;
   mostrarServicios = false;
   mostrarComprobante = false;
 
-  habitacionSeleccionada = 'Sin seleccionar';
+  habitacionSeleccionada: Habitacion | null = null;
 
   fechaCheckIn = '';
   fechaCheckOut = '';
 
-  serviciosSeleccionadosTexto = 'Ninguno';
+  
 
   totalReserva = 0;
 
@@ -97,6 +98,34 @@ export class DashboardUser implements OnInit {
 
   }
 
+  calcularTotal(): void {
+
+    let total = 0;
+
+    if (this.habitacionSeleccionada) {
+
+      total += this.habitacionSeleccionada.precio;
+
+    }
+
+    this.serviciosSeleccionados.forEach(servicio => {
+
+      total += servicio.precio;
+
+    });
+
+    this.totalReserva = total;
+
+  }
+
+  seleccionarHabitacion(habitacion: Habitacion): void {
+
+    this.habitacionSeleccionada = habitacion;
+
+    this.calcularTotal();
+
+  }
+
   confirmarHabitacion(): void {
 
     this.mostrarServicios = true;
@@ -108,5 +137,28 @@ export class DashboardUser implements OnInit {
     this.mostrarComprobante = true;
 
   }
+
+  toggleServicio(servicio: Servicio): void {
+
+  const existe = this.serviciosSeleccionados.find(
+    s => s.id_servicio === servicio.id_servicio
+  );
+
+  if (existe) {
+
+    this.serviciosSeleccionados =
+      this.serviciosSeleccionados.filter(
+        s => s.id_servicio !== servicio.id_servicio
+      );
+
+  } else {
+
+    this.serviciosSeleccionados.push(servicio);
+
+  }
+
+  this.calcularTotal();
+
+}
 
 }

@@ -59,7 +59,8 @@
 
             @for (habitacion of habitaciones; track habitacion.numero) {
 
-            <input type="radio" name="habitacion" [id]="'hab-' + habitacion.numero">
+            <input type="radio" name="habitacion" [id]="'hab-' + habitacion.numero" 
+            (change)="seleccionarHabitacion(habitacion)">
 
             <label [for]="'hab-' + habitacion.numero" class="item-habitacion">
 
@@ -113,69 +114,32 @@
 
         <div class="contenedor-servicios">
 
-            <input type="checkbox" id="servicio-desayuno">
+            @for (servicio of servicios; track servicio.id_servicio) {
 
-            <label for="servicio-desayuno" class="item-servicio">
+            <input
+                type="checkbox"
+                [id]="'servicio-' + servicio.id_servicio"
+                (change)="toggleServicio(servicio)">
 
-                <h3>Desayuno</h3>
+            <label
+                [for]="'servicio-' + servicio.id_servicio"
+                class="item-servicio">
+
+                <h3>
+                    {{ servicio.nombre }}
+                </h3>
 
                 <p>
-                    Agregá desayuno a tu reserva.
+                    {{ servicio.detalle }}
                 </p>
 
                 <strong>
-                    + $10.000
+                    + ${{ servicio.precio }}
                 </strong>
 
             </label>
 
-            <input type="checkbox" id="servicio-limpieza">
-
-            <label for="servicio-limpieza" class="item-servicio">
-
-                <h3>Limpieza</h3>
-
-                <p>
-                    Pedí limpieza adicional para tu habitación.
-                </p>
-
-                <strong>
-                    + $8.000
-                </strong>
-
-            </label>
-
-            <input type="checkbox" id="servicio-estacionamiento">
-
-            <label for="servicio-estacionamiento" class="item-servicio">
-
-                <h3>Estacionamiento</h3>
-
-                <p>
-                    Reservá un lugar para tu vehículo.
-                </p>
-
-                <strong>
-                    + $5.000
-                </strong>
-
-            </label>
-
-            <input type="checkbox" id="servicio-salas">
-
-            <label for="servicio-salas" class="item-servicio">
-
-                <h3>Salas Comunes</h3>
-
-                <p>
-                    Acceso a espacios compartidos del hotel.
-                </p>
-
-                <strong>
-                    + $3.000
-                </strong>
-
-            </label>
+            }
 
         </div>
 
@@ -187,34 +151,56 @@
             <h2>Resumen de Reserva</h2>
         </div>
 
-        <div class="detalle-resumen">
+    <div class="detalle-resumen">
 
-            <p>
-                <strong>Habitación:</strong>
-                Suite Ejecutiva
-            </p>
+        <p>
 
-            <p>
-                <strong>Check-in:</strong>
-                10/07/2026
-            </p>
+            <strong>Habitación:</strong>
 
-            <p>
-                <strong>Check-out:</strong>
-                15/07/2026
-            </p>
+            @if (habitacionSeleccionada) {
 
-            <p>
-                <strong>Servicios:</strong>
-                Ninguno seleccionado
-            </p>
+                {{ habitacionSeleccionada.tipo }}
 
-            <p>
-                <strong>Total estimado:</strong>
-                $220.000
-            </p>
+            } @else {
 
-        </div>
+                Sin seleccionar
+
+            }
+
+        </p>
+
+        <p>
+
+            <strong>Servicios:</strong>
+
+            @if (serviciosSeleccionados.length > 0) {
+
+                @for (
+                    servicio of serviciosSeleccionados;
+                    track servicio.id_servicio
+                ) {
+
+                    {{ servicio.nombre }}
+
+                }
+
+            } @else {
+
+                Ninguno
+
+            }
+
+        </p>
+
+        <p>
+
+            <strong>Total estimado:</strong>
+
+            ${{ totalReserva }}
+
+        </p>
+
+    </div>
 
         <button type="button" class="btn-primario" (click)="confirmarReserva()">
 
