@@ -38,6 +38,25 @@ body {
 input[type="radio"][name="habitacion"] {
     display: none;
 }
+input[type="checkbox"] {
+    display: none;
+}
+input[type="checkbox"]:checked + .item-servicio {
+    border: 2px solid #013b64;
+    background-color: #f0f7ff;
+}
+input[type="checkbox"]:checked + .item-servicio::after {
+    content: "✓ Seleccionado";
+    background: #013b64;
+    color: white;
+    padding: 5px 15px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 20px;
+
+    display: inline-block;
+    margin-top: 10px;
+}
 
 .contenedor-habitaciones {
     display: flex;
@@ -156,6 +175,13 @@ input[type="radio"]:checked+.item-habitacion::after {
     border-radius: 8px;
     padding: 18px;
     background: #f8f9fa;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.item-servicio:hover {
+    border-color: #3498db;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .item-servicio h3 {
