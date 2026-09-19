@@ -1,5 +1,5 @@
 export interface Reserva {
-  id_reserva: number;
+  id?: string;
   dni: string;
   numero: number;
   fecha_reserva: string;
