@@ -2,17 +2,19 @@ import { Component, OnInit } from '@angular/core';
 
 import { DashboardHeader } from '../../components/header-dashboard/header-dashboard';
 import { Footer } from '../../components/footer/footer';
-
+import { ReservaService } from '../../services/reserva.service';
+import { Reserva } from '../../models/reserva.interface';
 import { HabitacionService } from '../../services/habitacion.service';
 import { ServicioService } from '../../services/servicio.service';
 
 import { Habitacion } from '../../models/habitacion.interface';
 import { Servicio } from '../../models/servicio.interface';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard-user',
-  imports: [DashboardHeader, Footer, CommonModule],
+  imports: [DashboardHeader, Footer, CommonModule, FormsModule],
   templateUrl: './dashboard-user.html',
   styleUrl: './dashboard-user.css'
 })
@@ -21,8 +23,9 @@ export class DashboardUser implements OnInit {
   habitaciones: Habitacion[] = [];
   servicios: Servicio[] = [];
   serviciosSeleccionados: Servicio[] = [];
-
+  reservas: Reserva[] = [];
   mostrarHabitaciones = false;
+  habitacionesDisponibles: Habitacion[] = [];
   mostrarServicios = false;
   mostrarComprobante = false;
 
@@ -30,14 +33,13 @@ export class DashboardUser implements OnInit {
 
   fechaCheckIn = '';
   fechaCheckOut = '';
-
   
-
   totalReserva = 0;
 
   constructor(
     private habitacionService: HabitacionService,
-    private servicioService: ServicioService
+    private servicioService: ServicioService,
+    private reservaService: ReservaService
   ) {}
 
   ngOnInit(): void {
@@ -89,12 +91,89 @@ export class DashboardUser implements OnInit {
       }
 
     });
+    this.reservaService.getReservas().subscribe({
+
+      next: (data) => {
+
+        this.reservas = data;
+
+        console.log(
+          'Reservas cargadas:',
+          this.reservas
+        );
+
+      },
+
+      error: (err) => {
+
+        console.error(
+          'Error al cargar reservas:',
+          err
+        );
+
+      }
+
+    });
+  }
+
+buscarDisponibilidad(): void {
+
+  if (
+    !this.fechaCheckIn ||
+    !this.fechaCheckOut
+  ) {
+
+    alert(
+      'Debe seleccionar fecha de ingreso y egreso'
+    );
+
+    return;
 
   }
 
-  buscarDisponibilidad(): void {
+  this.habitacionesDisponibles =
+    this.habitaciones.filter(
+      habitacion =>
+        this.estaDisponible(habitacion)
+    );
 
-    this.mostrarHabitaciones = true;
+  this.mostrarHabitaciones = true;
+
+}
+  estaDisponible(
+    habitacion: Habitacion
+  ): boolean {
+
+    const ingresoUsuario = new Date(
+      this.fechaCheckIn
+    );
+
+    const salidaUsuario = new Date(
+      this.fechaCheckOut
+    );
+
+    const reservasHabitacion =
+      this.reservas.filter(
+        reserva =>
+          reserva.numero === habitacion.numero
+      );
+
+    return !reservasHabitacion.some(
+      reserva => {
+
+        const ingresoReserva =
+          new Date(reserva.checkin);
+
+        const salidaReserva =
+          new Date(reserva.checkout);
+
+        return (
+          ingresoUsuario < salidaReserva &&
+          salidaUsuario > ingresoReserva
+        );
+
+      }
+    );
 
   }
 
@@ -104,7 +183,11 @@ export class DashboardUser implements OnInit {
 
     if (this.habitacionSeleccionada) {
 
-      total += this.habitacionSeleccionada.precio;
+      const noches = this.obtenerCantidadNoches();
+
+      total +=
+        this.habitacionSeleccionada.precio *
+        noches;
 
     }
 
@@ -132,7 +215,7 @@ export class DashboardUser implements OnInit {
 
   }
 
-  confirmarReserva(): void {
+ confirmarReserva(): void {
 
     this.mostrarComprobante = true;
 
@@ -158,6 +241,23 @@ export class DashboardUser implements OnInit {
   }
 
   this.calcularTotal();
+
+}
+obtenerCantidadNoches(): number {
+
+  if (!this.fechaCheckIn || !this.fechaCheckOut) {
+    return 0;
+  }
+
+  const ingreso = new Date(this.fechaCheckIn);
+  const salida = new Date(this.fechaCheckOut);
+
+  const diferencia =
+    salida.getTime() - ingreso.getTime();
+
+  return Math.ceil(
+    diferencia / (1000 * 60 * 60 * 24)
+  );
 
 }
 

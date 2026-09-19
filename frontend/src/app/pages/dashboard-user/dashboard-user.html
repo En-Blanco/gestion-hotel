@@ -21,12 +21,12 @@
 
                 <div class="grupo-input">
                     <label>Check-in</label>
-                    <input type="date">
+                    <input type="date" [(ngModel)]="fechaCheckIn" name="checkIn" (change)="calcularTotal()">
                 </div>
 
                 <div class="grupo-input">
                     <label>Check-out</label>
-                    <input type="date">
+                    <input type="date" [(ngModel)]="fechaCheckOut" name="checkOut" (change)="calcularTotal()">
                 </div>
 
             </div>
@@ -57,7 +57,7 @@
 
         <div class="contenedor-habitaciones">
 
-            @for (habitacion of habitaciones; track habitacion.numero) {
+            @for (habitacion of habitacionesDisponibles; track habitacion.numero) {
 
             <input type="radio" name="habitacion" [id]="'hab-' + habitacion.numero" 
             (change)="seleccionarHabitacion(habitacion)">
@@ -89,7 +89,17 @@
             </label>
 
             }
+            @if (
+                habitacionesDisponibles.length === 0
+                ) {
 
+                <p>
+                No existen habitaciones
+                disponibles para las fechas
+                seleccionadas.
+                </p>
+
+            }
         </div>
 
         <button type="button" class="btn-primario" (click)="confirmarHabitacion()">
@@ -168,7 +178,11 @@
             }
 
         </p>
-
+        <p>
+         <strong>Noches:</strong>
+         {{ obtenerCantidadNoches() }}
+        </p>
+        
         <p>
 
             <strong>Servicios:</strong>
