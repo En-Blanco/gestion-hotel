@@ -1,125 +1,192 @@
 {
-    "equipo": [
-        {
-            "id": "1",
-            "apellido": "Battista",
-            "nombre": "Mariano Iván",
-            "foto": "/sobre-nosotros/Battista_Mariano_foto.png",
-            "githubUrl": "https://github.com/Mariano-Battista"
-        },
-        {
-            "id": "2",
-            "apellido": "Gatica",
-            "nombre": "Pablo Emiliano",
-            "foto": "/sobre-nosotros/Gatica_Pablo_foto.png",
-            "githubUrl": "https://github.com/gatica489-dotcom"
-        },
-        {
-            "id": "3",
-            "apellido": "Gonzalez",
-            "nombre": "Javier Alexis",
-            "foto": "/sobre-nosotros/Gonzalez_Javier_foto.png",
-            "githubUrl": "https://github.com/Javier4286"
-        },
-        {
-            "id": "4",
-            "apellido": "Molina",
-            "nombre": "Agustina",
-            "foto": "/sobre-nosotros/Molina_Agustina_foto.png",
-            "githubUrl": "https://github.com/AgusMolina"
-        },
-        {
-            "id": "5",
-            "apellido": "Murua Ayosa",
-            "nombre": "Christian",
-            "foto": "/sobre-nosotros/Murua_Ayosa_Christian_foto.png",
-            "githubUrl": "https://github.com/cristianmurua18"
-        },
-        {
-            "id": "6",
-            "apellido": "Ranieri",
-            "nombre": "Marysol",
-            "foto": "/sobre-nosotros/Ranieri_Marysol_foto.png",
-            "githubUrl": "https://github.com/Marysol-web"
-        }
-    ],
-    "habitaciones": [
-        {
-            "id": "1",
-            "numero": 101,
-            "tipo": "Simple",
-            "precio": 25000,
-            "estado": "Disponible"
-        }
-    ],
-    "servicios": [
-        {
-            "id": "1",
-            "id_servicio": 1,
-            "nombre": "Desayuno",
-            "detalle": "Agregá desayuno a tu reserva.",
-            "precio": 3500
-        },
-        {
-            "id": "2",
-            "id_servicio": 2,
-            "nombre": "Limpieza",
-            "detalle": "Pedí limpieza adicional para tu habitación.",
-            "precio": 2000
-        },
-        {
-            "id": "3",
-            "id_servicio": 3,
-            "nombre": "Estacionamiento",
-            "detalle": "Reservá un lugar para tu vehículo.",
-            "precio": 1500
-        },
-        {
-            "id": "4",
-            "id_servicio": 4,
-            "nombre": "Salas comunes",
-            "detalle": "Consultá disponibilidad de espacios compartidos.",
-            "precio": 0
-        }
-    ],
-    "reservas": [
-        {
-            "id": "1",
-            "id_reserva": 1,
-            "dni": "30111222",
-            "numero": 101,
-            "fecha_reserva": "2026-09-15",
-            "checkin": "2026-09-20",
-            "checkout": "2026-09-25",
-            "estado": "Confirmada"
-        },
-        {
-            "id": "2",
-            "id_reserva": 2,
-            "dni": "28555666",
-            "numero": 101,
-            "fecha_reserva": "2026-09-18",
-            "checkin": "2026-10-01",
-            "checkout": "2026-10-05",
-            "estado": "Pendiente"
-        }
-    ],
-    "reserva_servicio": [
-        {
-            "id": "1",
-            "id_reserva": 1,
-            "id_servicio": 1
-        },
-        {
-            "id": "2",
-            "id_reserva": 1,
-            "id_servicio": 2
-        },
-        {
-            "id": "3",
-            "id_reserva": 2,
-            "id_servicio": 3
-        }
-    ]
+  "equipo": [
+    {
+      "id": "1",
+      "apellido": "Battista",
+      "nombre": "Mariano Iván",
+      "foto": "/sobre-nosotros/Battista_Mariano_foto.png",
+      "githubUrl": "https://github.com/Mariano-Battista"
+    },
+    {
+      "id": "2",
+      "apellido": "Gatica",
+      "nombre": "Pablo Emiliano",
+      "foto": "/sobre-nosotros/Gatica_Pablo_foto.png",
+      "githubUrl": "https://github.com/gatica489-dotcom"
+    },
+    {
+      "id": "3",
+      "apellido": "Gonzalez",
+      "nombre": "Javier Alexis",
+      "foto": "/sobre-nosotros/Gonzalez_Javier_foto.png",
+      "githubUrl": "https://github.com/Javier4286"
+    },
+    {
+      "id": "4",
+      "apellido": "Molina",
+      "nombre": "Agustina",
+      "foto": "/sobre-nosotros/Molina_Agustina_foto.png",
+      "githubUrl": "https://github.com/AgusMolina"
+    },
+    {
+      "id": "5",
+      "apellido": "Murua Ayosa",
+      "nombre": "Christian",
+      "foto": "/sobre-nosotros/Murua_Ayosa_Christian_foto.png",
+      "githubUrl": "https://github.com/cristianmurua18"
+    },
+    {
+      "id": "6",
+      "apellido": "Ranieri",
+      "nombre": "Marysol",
+      "foto": "/sobre-nosotros/Ranieri_Marysol_foto.png",
+      "githubUrl": "https://github.com/Marysol-web"
+    }
+  ],
+  "habitaciones": [
+    {
+      "numero": 101,
+      "tipo": "Simple",
+      "precio": 25000,
+      "estado": "Disponible",
+      "imagen": "assets/simple.jpg",
+      "id": "KGnFpENiAZs"
+    },
+    {
+      "numero": 102,
+      "tipo": "Doble",
+      "precio": 35000,
+      "estado": "Disponible",
+      "imagen": "assets/doble.jpg",
+      "id": "xId9cLzi7s4"
+    },
+    {
+      "numero": 103,
+      "tipo": "Suite",
+      "precio": 50000,
+      "estado": "Ocupada",
+      "imagen": "assets/suite.jpg",
+      "id": "SgnQ8p9iqXg"
+    }
+  ],
+  "servicios": [
+    {
+      "id_servicio": 1,
+      "nombre": "Desayuno",
+      "detalle": "Agregá desayuno a tu reserva.",
+      "precio": 3500,
+      "id": "68ywEbfzy7g"
+    },
+    {
+      "id_servicio": 2,
+      "nombre": "Limpieza",
+      "detalle": "Pedí limpieza adicional para tu habitación.",
+      "precio": 2000,
+      "id": "45y_AKsfLoo"
+    },
+    {
+      "id_servicio": 3,
+      "nombre": "Estacionamiento",
+      "detalle": "Reservá un lugar para tu vehículo.",
+      "precio": 1500,
+      "id": "-yWPWZbVKzE"
+    },
+    {
+      "id_servicio": 4,
+      "nombre": "Salas comunes",
+      "detalle": "Consultá disponibilidad de espacios compartidos.",
+      "precio": 0,
+      "id": "HSfW7D4Xv-Y"
+    }
+  ],
+  "reservas": [
+    {
+      "dni": "30111222",
+      "numero": 101,
+      "fecha_reserva": "2026-09-15",
+      "checkin": "2026-09-20",
+      "checkout": "2026-09-25",
+      "estado": "Confirmada",
+      "id": "FKv5cvhG-oA"
+    },
+    {
+      "dni": "28555666",
+      "numero": 101,
+      "fecha_reserva": "2026-09-18",
+      "checkin": "2026-10-01",
+      "checkout": "2026-10-05",
+      "estado": "Pendiente",
+      "id": "58gZ6GW1kH0"
+    },
+    {
+      "dni": "12345678",
+      "numero": 103,
+      "fecha_reserva": "2026-09-19",
+      "checkin": "2026-09-20",
+      "checkout": "2026-09-23",
+      "estado": "Confirmada",
+      "id": "E9IkI04hp6Q"
+    },
+    {
+      "dni": "12345678",
+      "numero": 102,
+      "fecha_reserva": "2026-09-19",
+      "checkin": "2026-09-20",
+      "checkout": "2026-09-27",
+      "estado": "Confirmada",
+      "id": "LpC_2igP0tQ"
+    },
+    {
+      "dni": "12345678",
+      "numero": 103,
+      "fecha_reserva": "2026-09-19",
+      "checkin": "2026-12-20",
+      "checkout": "2026-12-27",
+      "estado": "Confirmada",
+      "id": "ZBRFuxslCJE"
+    }
+  ],
+  "reserva_servicio": [
+    {
+      "id_reserva": "FKv5cvhG-oA",
+      "id_servicio": 1,
+      "id": "F48m-AIilhc"
+    },
+    {
+      "id_reserva": "FKv5cvhG-oA",
+      "id_servicio": 2,
+      "id": "3tM6eaM4tHs"
+    },
+    {
+      "id_reserva": "58gZ6GW1kH0",
+      "id_servicio": 3,
+      "id": "1rNHxCae9Ag"
+    },
+    {
+      "id_reserva": "E9IkI04hp6Q",
+      "id_servicio": 1,
+      "id": "JgnO1CvGWzM"
+    },
+    {
+      "id_reserva": "LpC_2igP0tQ",
+      "id_servicio": 1,
+      "id": "ZuD-ANMCbGg"
+    },
+    {
+      "id_reserva": "ZBRFuxslCJE",
+      "id_servicio": 1,
+      "id": "KBWwKf-VZaQ"
+    },
+    {
+      "id_reserva": "ZBRFuxslCJE",
+      "id_servicio": 3,
+      "id": "MWIqim89mOE"
+    },
+    {
+      "id_reserva": "ZBRFuxslCJE",
+      "id_servicio": 2,
+      "id": "a47pGLNOqf0"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
-

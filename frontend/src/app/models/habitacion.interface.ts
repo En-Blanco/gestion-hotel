@@ -3,4 +3,5 @@ export interface Habitacion {
   tipo: string;
   precio: number;
   estado: string;
+  imagen: string;
 }
