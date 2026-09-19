@@ -52,7 +52,74 @@
             "estado": "Disponible"
         }
     ],
-    "servicios": [],
-    "reservas": [],
-    "reserva_servicio": []
+    "servicios": [
+        {
+            "id": "1",
+            "id_servicio": 1,
+            "nombre": "Desayuno",
+            "detalle": "Agregá desayuno a tu reserva.",
+            "precio": 3500
+        },
+        {
+            "id": "2",
+            "id_servicio": 2,
+            "nombre": "Limpieza",
+            "detalle": "Pedí limpieza adicional para tu habitación.",
+            "precio": 2000
+        },
+        {
+            "id": "3",
+            "id_servicio": 3,
+            "nombre": "Estacionamiento",
+            "detalle": "Reservá un lugar para tu vehículo.",
+            "precio": 1500
+        },
+        {
+            "id": "4",
+            "id_servicio": 4,
+            "nombre": "Salas comunes",
+            "detalle": "Consultá disponibilidad de espacios compartidos.",
+            "precio": 0
+        }
+    ],
+    "reservas": [
+        {
+            "id": "1",
+            "id_reserva": 1,
+            "dni": "30111222",
+            "numero": 101,
+            "fecha_reserva": "2026-09-15",
+            "checkin": "2026-09-20",
+            "checkout": "2026-09-25",
+            "estado": "Confirmada"
+        },
+        {
+            "id": "2",
+            "id_reserva": 2,
+            "dni": "28555666",
+            "numero": 101,
+            "fecha_reserva": "2026-09-18",
+            "checkin": "2026-10-01",
+            "checkout": "2026-10-05",
+            "estado": "Pendiente"
+        }
+    ],
+    "reserva_servicio": [
+        {
+            "id": "1",
+            "id_reserva": 1,
+            "id_servicio": 1
+        },
+        {
+            "id": "2",
+            "id_reserva": 1,
+            "id_servicio": 2
+        },
+        {
+            "id": "3",
+            "id_reserva": 2,
+            "id_servicio": 3
+        }
+    ]
 }
+
