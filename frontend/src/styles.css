@@ -1,0 +1,40 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+/* RESET + BASE */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--primary);
+}
+
+/* VARIABLES (COLORES) */
+:root {
+  --primary: #013b64;
+  --secondary: #3498db;
+  --light-bg: rgb(223 223 223 / 83%);
+  --text-dark: #333;
+}
+
+/* BOTONES */
+.btn,
+.btn-primario,
+button {
+  background: var(--secondary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.btn:hover,
+.btn-primario:hover,
+button:hover {
+  background: #2181c0;
+}
