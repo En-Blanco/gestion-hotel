@@ -42,5 +42,17 @@
             "foto": "/sobre-nosotros/Ranieri_Marysol_foto.png",
             "githubUrl": "https://github.com/Marysol-web"
         }
-    ]
+    ],
+    "habitaciones": [
+        {
+            "id": "1",
+            "numero": 101,
+            "tipo": "Simple",
+            "precio": 25000,
+            "estado": "Disponible"
+        }
+    ],
+    "servicios": [],
+    "reservas": [],
+    "reserva_servicio": []
 }
