@@ -1,5 +1,6 @@
 export interface LoginResponse {
   id: string;
-  email: string;
-  rol: string;
+  dni: number;
+  correo: string;
+  id_rol: number;
 }

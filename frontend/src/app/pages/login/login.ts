@@ -6,6 +6,7 @@ import {
   ReactiveFormsModule,
   Validators
 } from '@angular/forms';
+
 import { Router, RouterLink } from '@angular/router';
 import { LoginService } from '../../services/login';
 
@@ -20,7 +21,7 @@ export class Login {
   rolSeleccionado: string = '';
 
   loginForm = new FormGroup({
-    email: new FormControl('', [
+    correo: new FormControl('', [
       Validators.required,
       Validators.email
     ]),
@@ -31,9 +32,9 @@ export class Login {
   });
 
   constructor(
-  private router: Router,
-  private loginService: LoginService
-) {}
+    private router: Router,
+    private loginService: LoginService
+  ) {}
 
   seleccionarRol(rol: string): void {
     this.rolSeleccionado = rol;
@@ -41,31 +42,38 @@ export class Login {
 
   onSubmit(): void {
 
-  if (this.loginForm.invalid) {
-    this.loginForm.markAllAsTouched();
-    return;
-  }
-
-  const datos = {
-    email: this.loginForm.value.email!,
-    password: this.loginForm.value.password!
-  };
-
-  this.loginService.login(datos).subscribe({
-    next: (respuesta) => {
-
-      if (respuesta.rol === 'cliente') {
-        this.router.navigate(['/dashboard-user']);
-      }
-
-      if (respuesta.rol === 'administrador') {
-        this.router.navigate(['/dashboard-admin']);
-      }
-    },
-
-    error: (error) => {
-      console.error('Error al iniciar sesión', error);
+    if (this.loginForm.invalid) {
+      this.loginForm.markAllAsTouched();
+      return;
     }
-  });
- }
+
+    const datos = {
+      correo: this.loginForm.value.correo!,
+      contrasena: this.loginForm.value.password!
+    };
+
+    this.loginService.login(datos).subscribe({
+
+      next: (respuesta) => {
+
+        localStorage.setItem(
+          'usuarioLogueado',
+          JSON.stringify(respuesta)
+        );
+
+        if (respuesta.id_rol === 1) {
+          this.router.navigate(['/dashboard-user']);
+        }
+
+        if (respuesta.id_rol === 0) {
+          this.router.navigate(['/dashboard-admin']);
+        }
+      },
+
+      error: (error) => {
+        console.error('Error al iniciar sesión', error);
+      }
+
+    });
+  }
 }
