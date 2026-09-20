@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import {
   FormControl,
   FormGroup,
@@ -6,6 +7,7 @@ import {
   Validators
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { LoginService } from '../../services/login';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +30,10 @@ export class Login {
     ])
   });
 
-  constructor(private router: Router) {}
+  constructor(
+  private router: Router,
+  private loginService: LoginService
+) {}
 
   seleccionarRol(rol: string): void {
     this.rolSeleccionado = rol;
@@ -36,17 +41,31 @@ export class Login {
 
   onSubmit(): void {
 
-    if (this.loginForm.invalid) {
-      this.loginForm.markAllAsTouched();
-      return;
-    }
-
-    if (this.rolSeleccionado === 'cliente') {
-      this.router.navigate(['/dashboard-user']);
-    }
-
-    if (this.rolSeleccionado === 'administrador') {
-      this.router.navigate(['/dashboard-admin']);
-    }
+  if (this.loginForm.invalid) {
+    this.loginForm.markAllAsTouched();
+    return;
   }
+
+  const datos = {
+    email: this.loginForm.value.email!,
+    password: this.loginForm.value.password!
+  };
+
+  this.loginService.login(datos).subscribe({
+    next: (respuesta) => {
+
+      if (respuesta.rol === 'cliente') {
+        this.router.navigate(['/dashboard-user']);
+      }
+
+      if (respuesta.rol === 'administrador') {
+        this.router.navigate(['/dashboard-admin']);
+      }
+    },
+
+    error: (error) => {
+      console.error('Error al iniciar sesión', error);
+    }
+  });
+ }
 }
