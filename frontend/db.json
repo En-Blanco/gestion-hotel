@@ -188,5 +188,28 @@
       "id": "a47pGLNOqf0"
     }
   ],
+  "usuarios": [
+  {
+    "dni": 1111111,
+    "nombre": "Elena",
+    "apellido": "Fisher",
+    "correo": "hola@g.com",
+    "telefono": 3510000000,
+    "contrasena": "123",
+    "id_rol": 0,
+    "id": "9wuk5HpqRHY"
+  }
+,
+{
+    "dni": 12345678,
+    "nombre": "Mario",
+    "apellido": "Prueba",
+    "correo": "mario@hotel.com",
+    "telefono": 3511111111,
+    "contrasena": "123",
+    "id_rol": 1,
+    "id": "usuario-prueba-1"
+  }
+],
   "$schema": "./node_modules/json-server/schema.json"
 }

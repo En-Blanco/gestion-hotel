@@ -18,7 +18,6 @@ import { LoginService } from '../../services/login';
 })
 export class Login {
 
-  rolSeleccionado: string = '';
 
   loginForm = new FormGroup({
     correo: new FormControl('', [
@@ -36,9 +35,7 @@ export class Login {
     private loginService: LoginService
   ) {}
 
-  seleccionarRol(rol: string): void {
-    this.rolSeleccionado = rol;
-  }
+
 
   onSubmit(): void {
 
@@ -56,19 +53,31 @@ export class Login {
 
       next: (respuesta) => {
 
-        localStorage.setItem(
-          'usuarioLogueado',
-          JSON.stringify(respuesta)
-        );
+  if (respuesta.length === 0) {
+    console.log('Correo o contraseña incorrectos');
+    return;
+  }
 
-        if (respuesta.id_rol === 1) {
-          this.router.navigate(['/dashboard-user']);
-        }
+  const usuario = respuesta[0];
 
-        if (respuesta.id_rol === 0) {
-          this.router.navigate(['/dashboard-admin']);
-        }
-      },
+  if (usuario.contrasena !== datos.contrasena) {
+  console.log('Correo o contraseña incorrectos');
+  return;
+}
+
+  localStorage.setItem(
+    'usuarioLogueado',
+    JSON.stringify(usuario)
+  );
+
+  if (usuario.id_rol === 1) {
+    this.router.navigate(['/dashboard-user']);
+  }
+
+  if (usuario.id_rol === 0) {
+    this.router.navigate(['/dashboard-admin']);
+  }
+},
 
       error: (error) => {
         console.error('Error al iniciar sesión', error);
