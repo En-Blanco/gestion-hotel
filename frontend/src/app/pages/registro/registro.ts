@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { HeaderAlt } from "../../components/header-alt/header-alt";
 import { RegistroService } from '../../services/registro.service';
@@ -8,6 +8,21 @@ import { ReactiveFormsModule,
   Validators
 } from '@angular/forms';
 import { Usuario } from '../../models/usuario';
+import { Rol } from '../../models/rol';
+
+function validadorContraseñasIguales(form: any) {
+
+  const clave1 = form.get('contrasena1')?.value;
+  const clave2 = form.get('contrasena2')?.value;
+
+  if (!clave1 || !clave2) {
+    return null;
+  }
+  if (clave1 !== clave2) {
+    return { noCoinciden: true };
+  }
+  return null; 
+}
 
 @Component({
   imports: [RouterLink, HeaderAlt, ReactiveFormsModule],
@@ -15,8 +30,14 @@ import { Usuario } from '../../models/usuario';
   styleUrl: './registro.css',
   templateUrl: './registro.html',
 })
-export class Registro {
+export class Registro implements OnInit {
   constructor(private RegistroService:RegistroService, private router: Router){}
+
+  idRolEstandar: number | null = null;
+
+  ngOnInit(): void {
+    this.obtenerIdRol();
+  }
 
   registroForm = new FormGroup({
     dni: new FormControl('', [
@@ -37,11 +58,23 @@ export class Registro {
     ]),
     contrasena1: new FormControl('', [
       Validators.required,
+      Validators.minLength(8)
     ]),
     contrasena2: new FormControl('', [
-      Validators.required,
+      Validators.required
     ])
-  })
+  },{ validators: validadorContraseñasIguales });
+
+  obtenerIdRol(): void {
+    this.RegistroService.getRolUsuario('Estándar').subscribe({
+      next: (rol) => {
+        this.idRolEstandar = rol.id;
+      },
+      error: (err) => {
+        console.error('Error al obtener los roles:', err);
+      }
+    });
+  }
 
   onSubmit(event: Event): void {
     if (this.registroForm.valid)
@@ -54,11 +87,12 @@ export class Registro {
       correo: form.correo!,
       telefono: Number(form.telefono!),
       contrasena: form.contrasena1!,
-      id_rol: 1
+      id_rol: this.idRolEstandar ?? 1
       };
 
       this.RegistroService.crearUsuario(usuario).subscribe({
         next: data => {
+          console.log("Proceso exitoso, se devuelve: ",data)
           this.router.navigate(['/login']);
       },
         error: error=> {
