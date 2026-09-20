@@ -199,6 +199,17 @@
     "id_rol": 0,
     "id": "9wuk5HpqRHY"
   }
+,
+{
+    "dni": 12345678,
+    "nombre": "Mario",
+    "apellido": "Prueba",
+    "correo": "mario@hotel.com",
+    "telefono": 3511111111,
+    "contrasena": "123",
+    "id_rol": 1,
+    "id": "usuario-prueba-1"
+  }
 ],
   "$schema": "./node_modules/json-server/schema.json"
 }
