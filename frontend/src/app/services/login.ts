@@ -9,9 +9,11 @@ import { LoginResponse } from '../models/login-response';
 })
 export class LoginService {
 
-    constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-    login(datos: Login): Observable<LoginResponse> {
-        return this.http.post<LoginResponse>('/api/login', datos);
-    }
+  login(datos: Login): Observable<LoginResponse[]> {
+    const url = `http://localhost:3000/usuarios?correo=${datos.correo}`;
+
+    return this.http.get<LoginResponse[]>(url);
+  }
 }
