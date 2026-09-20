@@ -7,6 +7,7 @@
             Tus reservas de forma simple, rápida y segura.
         </h2>
         <form [formGroup]="registroForm" (ngSubmit)="onSubmit($event)">
+            <div class="form-group">
             <label for="nombre">Nombre</label>
             <input type="text" id="nombre" formControlName="nombre" placeholder="Ingresá tu nombre">
                 @if (
@@ -17,7 +18,9 @@
                         El nombre es obligatorio.
                     </small>
                 }
-            <label for="apellido">Apellido</label>
+            </div>    
+            <div class="form-group">
+                <label for="apellido">Apellido</label>
             <input type="text" id="apellido" formControlName="apellido" placeholder="Ingresá tu apellido">
                 @if (
                     registroForm.controls.apellido.touched &&
@@ -27,7 +30,9 @@
                         El apellido es obligatorio.
                     </small>
                 }
-            <label for="dni">Documento Nacional de Identidad</label>
+            </div>    
+            <div class="form-group">
+                <label for="dni">Documento Nacional de Identidad</label>
             <input type="text" id="dni" formControlName="dni" placeholder="Ingresá tu documento">
                 @if (
                     registroForm.controls.dni.touched &&
@@ -37,7 +42,9 @@
                         El documento es obligatorio.
                     </small>
                 }
-            <label for="email">Correo electrónico</label>
+            </div>    
+            <div class="form-group">
+                <label for="email">Correo electrónico</label>
             <input type="email" id="email" formControlName="correo" placeholder="ejemplo@email.com">
             @if (
                 registroForm.controls.correo.touched &&
@@ -46,9 +53,7 @@
                 <small class="error-message">
                     El correo electrónico es obligatorio.
                 </small>
-            }
-
-            @if (
+            } @else if(
                 registroForm.controls.correo.touched &&
                 registroForm.controls.correo.hasError('email')
             ) {
@@ -56,7 +61,8 @@
                     Ingresá un correo electrónico válido.
                 </small>
             }
-
+            </div> 
+            <div class="form-group">
             <label for="telefono">Teléfono</label>
             <input type="text" id="telefono" formControlName="telefono" placeholder="351XXXXXXXX">
                 @if (
@@ -67,7 +73,9 @@
                         El teléfono es obligatorio.
                     </small>
                 }
-            <label for="contrasena1">Contraseña</label>
+            </div>    
+            <div class="form-group">
+                <label for="contrasena1">Contraseña</label>
             <input type="password" id="contrasena1" formControlName="contrasena1" placeholder="Mínimo 8 caracteres">
                 @if (
                     registroForm.controls.contrasena1.touched &&
@@ -76,8 +84,15 @@
                     <small class="error-message">
                         La contraseña es obligatoria.
                     </small>
+                } @else if (
+                    registroForm.controls.contrasena1.touched &&
+                    registroForm.controls.contrasena1.hasError('minlength')
+                ) {
+                    <small class="error-message">La contraseña debe tener al menos 8 caracteres.</small>
                 }
-            <label for="contrasena2">Confirmar contraseña</label>
+            </div>    
+            <div class="form-group">
+                <label for="contrasena2">Confirmar contraseña</label>
             <input type="password" id="contrasena2" formControlName="contrasena2" placeholder="Repetí tu contraseña">
                 @if (
                     registroForm.controls.contrasena2.touched &&
@@ -86,7 +101,14 @@
                     <small class="error-message">
                         Debes confirmar la contraseña.
                     </small>
+                }@else if (
+                    registroForm.controls.contrasena2.touched &&
+                    !registroForm.controls.contrasena2.hasError('required') &&
+                    registroForm.hasError('noCoinciden')
+                ) {
+                    <small class="error-message">Las contraseñas no coinciden.</small>
                 }
+            </div>    
 
             <button type="submit" class="register_btn">
                 Registrarse

@@ -9,6 +9,20 @@ import { ReactiveFormsModule,
 } from '@angular/forms';
 import { Usuario } from '../../models/usuario';
 
+function validadorContraseñasIguales(form: any) {
+
+  const clave1 = form.get('contrasena1')?.value;
+  const clave2 = form.get('contrasena2')?.value;
+
+  if (!clave1 || !clave2) {
+    return null;
+  }
+  if (clave1 !== clave2) {
+    return { noCoinciden: true };
+  }
+  return null; 
+}
+
 @Component({
   imports: [RouterLink, HeaderAlt, ReactiveFormsModule],
   selector: 'app-registro',
@@ -37,11 +51,12 @@ export class Registro {
     ]),
     contrasena1: new FormControl('', [
       Validators.required,
+      Validators.minLength(8)
     ]),
     contrasena2: new FormControl('', [
-      Validators.required,
+      Validators.required
     ])
-  })
+  },{ validators: validadorContraseñasIguales });
 
   onSubmit(event: Event): void {
     if (this.registroForm.valid)
@@ -54,11 +69,12 @@ export class Registro {
       correo: form.correo!,
       telefono: Number(form.telefono!),
       contrasena: form.contrasena1!,
-      id_rol: 1
+      id_rol: 1 //Usuarios por crear serán estándar
       };
 
       this.RegistroService.crearUsuario(usuario).subscribe({
         next: data => {
+          console.log("Proceso exitoso, se devuelve: ",data)
           this.router.navigate(['/login']);
       },
         error: error=> {

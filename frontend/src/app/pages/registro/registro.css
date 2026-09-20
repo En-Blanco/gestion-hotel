@@ -73,15 +73,16 @@
 
 form label{
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     font-weight: bold;
+    font-size: 14px;
     color: var(--primary)
 }
 
 form input{
     width: 100%;
-    padding: 14px;
-    margin-bottom: 20px;
+    padding: 12px 14px;
+    /*margin-bottom: 20px;*/
     border: 1px solid #d8d8d8;
     border-radius: 8px;
     background: white;
@@ -108,6 +109,29 @@ form button{
 
 form button:hover{
     background: #2181c0;
+}
+
+/* Estado de error en el campo */
+form input.ng-invalid.ng-touched {
+  border-color: #dc3545;
+  background-color: #fff9f9;
+}
+form input.ng-invalid.ng-touched:focus {
+  border-color: #dc3545;
+}
+/* Mensaje de error */
+.error-message {
+  color: #dc3545;
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: 5px;
+  display: block;
+}
+
+.form-group {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* =====================
