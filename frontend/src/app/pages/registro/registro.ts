@@ -8,7 +8,6 @@ import { ReactiveFormsModule,
   Validators
 } from '@angular/forms';
 import { Usuario } from '../../models/usuario';
-import { Rol } from '../../models/rol';
 
 function validadorContraseñasIguales(form: any) {
 
@@ -98,11 +97,15 @@ export class Registro implements OnInit {
 
       this.RegistroService.crearUsuario(usuario).subscribe({
         next: data => {
-          console.log("Proceso exitoso, se devuelve: ",data)
-          this.router.navigate(['/login']);
+          // Quiero mandar un mensaje de exito al html
+          this.registroForm.setErrors({ 'success': 'Usuario creado. Sera redirigido a inicio de sesion. Espere unos segundos por favor.' });
+          // Aguanto unos segundos antes de redirigir
+          setTimeout(() => {
+            this.router.navigate(['/login']);
+          }, 3000); // 3 segundos de espera antes de redirigir
       },
         error: error=> {
-          console.error(error);
+          this.registroForm.setErrors({ 'error': 'Error al crear el usuario. Intente de nuevo' });
         }
       })
     }

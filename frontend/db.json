@@ -208,6 +208,16 @@
       "contrasena": "12345678",
       "id_rol": 1,
       "id": "usuario-prueba-1"
+    },
+    {
+      "dni": 35674639,
+      "nombre": "Christian",
+      "apellido": "Ayosa",
+      "correo": "cristianmurua.18@gmail.com",
+      "telefono": 3544400372,
+      "contrasena": "12345678",
+      "id_rol": 1,
+      "id": "Ov7bA0K7yvI"
     }
   ],
   "roles": [

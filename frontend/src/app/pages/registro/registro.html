@@ -148,10 +148,32 @@
                 ) {
                     <small class="error-message">Las contraseñas no coinciden.</small>
                 }
-            </div>    
+            </div>
+            
+            @if (
+                registroForm.hasError('success')
+            ) {
+                <div class="form-alert form-alert--success" role="status" aria-live="polite">
+                    <span class="form-alert__icon" aria-hidden="true">✓</span>
+                    <p class="form-alert__text">{{ registroForm.getError('success') }}</p>
+                    <span class="form-alert__progress" aria-hidden="true"></span>
+                </div>
+            }
+            @if (
+                registroForm.hasError('error')
+            ) {
+                <div class="form-alert form-alert--error" role="alert" aria-live="assertive">
+                    <span class="form-alert__icon" aria-hidden="true">!</span>
+                    <p class="form-alert__text">{{ registroForm.getError('error') }}</p>
+                </div>
+            }
 
-            <button type="submit" class="register_btn">
-                Registrarse
+            <button type="submit" class="register_btn" [disabled]="registroForm.hasError('success')">
+                @if (registroForm.hasError('success')) {
+                    Redirigiendo...
+                } @else {
+                    Registrarse
+                }
             </button>
         </form>
         <div class="login">
