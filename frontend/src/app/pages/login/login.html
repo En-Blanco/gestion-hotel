@@ -25,7 +25,7 @@
         <!-- FORMULARIO -->
 
         <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-
+            
             <!-- EMAIL -->
 
             <div class="input-group">
@@ -102,6 +102,16 @@
                 }
 
             </div>
+
+            <!-- ERROR GENERAL -->
+            @if (
+            loginForm.touched &&
+            loginForm.hasError('error')
+            ) {
+            <small class="error-message">
+                {{ loginForm.getError('error') }}
+            </small>
+            }
 
 
             <!-- RECUPERAR CONTRASEÑA -->

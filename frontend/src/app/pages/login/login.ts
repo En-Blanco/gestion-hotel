@@ -81,7 +81,7 @@ export class Login {
 },
 
       error: (error) => {
-        console.error('Error al iniciar sesión', error);
+        this.loginForm.setErrors({ 'error': 'Error al iniciar sesión. Intente de nuevo' });
       }
 
     });
