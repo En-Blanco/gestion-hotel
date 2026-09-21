@@ -26,7 +26,8 @@ export class Login {
     ]),
 
     password: new FormControl('', [
-      Validators.required
+      Validators.required,
+      Validators.minLength(8)
     ])
   });
 
@@ -54,14 +55,14 @@ export class Login {
       next: (respuesta) => {
 
   if (respuesta.length === 0) {
-    console.log('Correo o contraseña incorrectos');
+    this.loginForm.controls.correo.setErrors({ notFound: true });
     return;
   }
 
   const usuario = respuesta[0];
 
   if (usuario.contrasena !== datos.contrasena) {
-  console.log('Correo o contraseña incorrectos');
+  this.loginForm.controls.password.setErrors({ incorrect: true });
   return;
 }
 

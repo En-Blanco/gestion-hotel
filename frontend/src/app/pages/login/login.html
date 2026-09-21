@@ -54,6 +54,14 @@
                     Ingresá un correo electrónico válido.
                 </small>
                 }
+                @if (
+                loginForm.controls.correo.touched &&
+                loginForm.controls.correo.hasError('notFound')
+                ) {
+                <small class="error-message">
+                    El correo electrónico no se encuentra registrado.
+                </small>
+                }
 
             </div>
 
@@ -74,6 +82,22 @@
                 ) {
                 <small class="error-message">
                     La contraseña es obligatoria.
+                </small>
+                }
+                @if (
+                loginForm.controls.password.touched &&
+                loginForm.controls.password.hasError('minlength')
+                ) {
+                <small class="error-message">
+                    La contraseña debe tener al menos 8 caracteres.
+                </small>
+                }
+                @if (
+                loginForm.controls.password.touched &&
+                loginForm.controls.password.hasError('incorrect')
+                ) {
+                <small class="error-message">
+                    La contraseña es incorrecta.
                 </small>
                 }
 
