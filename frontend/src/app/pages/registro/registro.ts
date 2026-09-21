@@ -42,12 +42,17 @@ export class Registro implements OnInit {
   registroForm = new FormGroup({
     dni: new FormControl('', [
       Validators.required,
+      Validators.pattern(/^\d{7,8}$/) // Assuming DNI is 7 or 8 digits
     ]),
     nombre: new FormControl('', [
       Validators.required,
+      Validators.minLength(2),
+      Validators.pattern(/^[a-zA-Z]+$/) // Assuming nombre contains only letters
     ]),
     apellido: new FormControl('', [
       Validators.required,
+      Validators.minLength(2),
+      Validators.pattern(/^[a-zA-Z]+$/) // Assuming apellido contains only letters
     ]),
     correo: new FormControl('', [
       Validators.required,
@@ -61,7 +66,8 @@ export class Registro implements OnInit {
       Validators.minLength(8)
     ]),
     contrasena2: new FormControl('', [
-      Validators.required
+      Validators.required,
+      Validators.minLength(8)
     ])
   },{ validators: validadorContraseñasIguales });
 
