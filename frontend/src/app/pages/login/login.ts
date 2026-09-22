@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
+
 import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators
 } from '@angular/forms';
+
 import { Router, RouterLink } from '@angular/router';
+import { LoginService } from '../../services/login';
 
 @Component({
   selector: 'app-login',
@@ -15,24 +18,25 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class Login {
 
-  rolSeleccionado: string = '';
 
   loginForm = new FormGroup({
-    email: new FormControl('', [
+    correo: new FormControl('', [
       Validators.required,
       Validators.email
     ]),
 
     password: new FormControl('', [
-      Validators.required
+      Validators.required,
+      Validators.minLength(8)
     ])
   });
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private loginService: LoginService
+  ) {}
 
-  seleccionarRol(rol: string): void {
-    this.rolSeleccionado = rol;
-  }
+
 
   onSubmit(): void {
 
@@ -41,12 +45,45 @@ export class Login {
       return;
     }
 
-    if (this.rolSeleccionado === 'cliente') {
-      this.router.navigate(['/dashboard-user']);
-    }
+    const datos = {
+      correo: this.loginForm.value.correo!,
+      contrasena: this.loginForm.value.password!
+    };
 
-    if (this.rolSeleccionado === 'administrador') {
-      this.router.navigate(['/dashboard-admin']);
-    }
+    this.loginService.login(datos).subscribe({
+
+      next: (respuesta) => {
+
+  if (respuesta.length === 0) {
+    this.loginForm.controls.correo.setErrors({ notFound: true });
+    return;
+  }
+
+  const usuario = respuesta[0];
+
+  if (usuario.contrasena !== datos.contrasena) {
+  this.loginForm.controls.password.setErrors({ incorrect: true });
+  return;
+}
+
+  localStorage.setItem(
+    'usuarioLogueado',
+    JSON.stringify(usuario)
+  );
+
+  if (usuario.id_rol === 1) {
+    this.router.navigate(['/dashboard-user']);
+  }
+
+  if (usuario.id_rol === 0) {
+    this.router.navigate(['/dashboard-admin']);
+  }
+},
+
+      error: (error) => {
+        this.loginForm.setErrors({ 'error': 'Error al iniciar sesión. Intente de nuevo' });
+      }
+
+    });
   }
 }
