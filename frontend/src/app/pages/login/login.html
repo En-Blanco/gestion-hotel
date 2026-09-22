@@ -25,7 +25,7 @@
         <!-- FORMULARIO -->
 
         <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-
+            
             <!-- EMAIL -->
 
             <div class="input-group">
@@ -35,10 +35,11 @@
                 </label>
 
                 <input type="email" id="email" name="email" placeholder="Ingrese su correo" autocomplete="email"
-                    formControlName="email">
+                    formControlName="correo">
+
                 @if (
-                loginForm.controls.email.touched &&
-                loginForm.controls.email.hasError('required')
+                loginForm.controls.correo.touched &&
+                loginForm.controls.correo.hasError('required')
                 ) {
                 <small class="error-message">
                     El correo electrónico es obligatorio.
@@ -46,11 +47,19 @@
                 }
 
                 @if (
-                loginForm.controls.email.touched &&
-                loginForm.controls.email.hasError('email')
+                loginForm.controls.correo.touched &&
+                loginForm.controls.correo.hasError('email')
                 ) {
                 <small class="error-message">
                     Ingresá un correo electrónico válido.
+                </small>
+                }
+                @if (
+                loginForm.controls.correo.touched &&
+                loginForm.controls.correo.hasError('notFound')
+                ) {
+                <small class="error-message">
+                    El correo electrónico no se encuentra registrado.
                 </small>
                 }
 
@@ -75,27 +84,37 @@
                     La contraseña es obligatoria.
                 </small>
                 }
+                @if (
+                loginForm.controls.password.touched &&
+                loginForm.controls.password.hasError('minlength')
+                ) {
+                <small class="error-message">
+                    La contraseña debe tener al menos 8 caracteres.
+                </small>
+                }
+                @if (
+                loginForm.controls.password.touched &&
+                loginForm.controls.password.hasError('incorrect')
+                ) {
+                <small class="error-message">
+                    La contraseña es incorrecta.
+                </small>
+                }
+
             </div>
 
-            <!-- BOTONES ROL -->
+            <!-- ERROR GENERAL -->
+            @if (
+            loginForm.touched &&
+            loginForm.hasError('error')
+            ) {
+            <small class="error-message">
+                {{ loginForm.getError('error') }}
+            </small>
+            }
 
-            <div class="role-buttons">
 
-                <button type="button" class="role-btn" (click)="seleccionarRol('cliente')">
-
-                    Cliente
-
-                </button>
-
-                <button type="button" class="role-btn" (click)="seleccionarRol('administrador')">
-
-                    Administrador
-
-                </button>
-
-            </div>
-
-            <!-- RECUPERAR -->
+            <!-- RECUPERAR CONTRASEÑA -->
 
             <div class="options">
 
@@ -105,12 +124,10 @@
 
             </div>
 
-            <!-- BOTON -->
+            <!-- BOTON INGRESAR -->
 
-            <button type="submit" class="login-btn" (ngSubmit)="onSubmit()">
-
+            <button type="submit" class="login-btn">
                 Ingresar
-
             </button>
 
         </form>
@@ -121,8 +138,8 @@
 
             <p>
                 ¿No tenés cuenta?
-                <a routerLink="/registro">
 
+                <a routerLink="/registro">
                     Registrarse
                 </a>
             </p>

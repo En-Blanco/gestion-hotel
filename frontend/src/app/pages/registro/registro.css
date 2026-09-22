@@ -73,15 +73,16 @@
 
 form label{
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     font-weight: bold;
+    font-size: 14px;
     color: var(--primary)
 }
 
 form input{
     width: 100%;
-    padding: 14px;
-    margin-bottom: 20px;
+    padding: 12px 14px;
+    /*margin-bottom: 20px;*/
     border: 1px solid #d8d8d8;
     border-radius: 8px;
     background: white;
@@ -110,6 +111,137 @@ form button:hover{
     background: #2181c0;
 }
 
+/* Estado de error en el campo */
+form input.ng-invalid.ng-touched {
+  border-color: #dc3545;
+  background-color: #fff9f9;
+}
+form input.ng-invalid.ng-touched:focus {
+  border-color: #dc3545;
+}
+/* Mensaje de error */
+.error-message {
+  color: #dc3545;
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: 5px;
+  display: block;
+}
+/* =====================
+   ALERTAS DEL FORMULARIO
+   ===================== */
+
+.form-alert {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 8px 0 20px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  overflow: hidden;
+  animation: alert-in 0.35s ease-out;
+}
+
+.form-alert__icon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.form-alert__text {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* Éxito */
+.form-alert--success {
+  background: #eaf7ee;
+  border-color: #bfe5c9;
+  color: #1c7c34;
+}
+
+.form-alert--success .form-alert__icon {
+  background: #28a745;
+  animation: icon-pop 0.4s 0.1s ease-out backwards;
+}
+
+/* Barra de progreso de la redirección (3s) */
+.form-alert__progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 100%;
+  background: #28a745;
+  transform-origin: left;
+  animation: progress-bar 3s linear forwards;
+}
+
+/* Error */
+.form-alert--error {
+  background: #fdecee;
+  border-color: #f5c2c7;
+  color: #b02a37;
+}
+
+.form-alert--error .form-alert__icon {
+  background: #dc3545;
+}
+
+@keyframes alert-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes icon-pop {
+  0%   { transform: scale(0); }
+  70%  { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+@keyframes progress-bar {
+  from { transform: scaleX(1); }
+  to   { transform: scaleX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .form-alert,
+  .form-alert--success .form-alert__icon {
+    animation: none;
+  }
+}
+
+/* Botón deshabilitado mientras redirige */
+form button:disabled {
+  background: #9fc7e4;
+  cursor: not-allowed;
+}
+
+.form-group {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
 /* =====================
    LOGIN
    ===================== */
@@ -128,3 +260,4 @@ form button:hover{
 .login a:hover{
     color: #2181c0;
 }
+

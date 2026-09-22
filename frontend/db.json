@@ -144,6 +144,15 @@
       "checkout": "2026-12-27",
       "estado": "Confirmada",
       "id": "ZBRFuxslCJE"
+    },
+    {
+      "dni": "35674639",
+      "numero": 101,
+      "fecha_reserva": "2026-09-22",
+      "checkin": "2026-12-01",
+      "checkout": "2026-12-05",
+      "estado": "Confirmada",
+      "id": "erVfDG160hw"
     }
   ],
   "reserva_servicio": [
@@ -186,6 +195,48 @@
       "id_reserva": "ZBRFuxslCJE",
       "id_servicio": 2,
       "id": "a47pGLNOqf0"
+    }
+  ],
+  "usuarios": [
+    {
+      "dni": 1111111,
+      "nombre": "Elena",
+      "apellido": "Fisher",
+      "correo": "hola@g.com",
+      "telefono": 3510000000,
+      "contrasena": "12345678",
+      "id_rol": 0,
+      "id": "9wuk5HpqRHY"
+    },
+    {
+      "dni": 12345678,
+      "nombre": "Mario",
+      "apellido": "Prueba",
+      "correo": "mario@hotel.com",
+      "telefono": 3511111111,
+      "contrasena": "12345678",
+      "id_rol": 1,
+      "id": "usuario-prueba-1"
+    },
+    {
+      "dni": 35674639,
+      "nombre": "Christian",
+      "apellido": "Ayosa",
+      "correo": "cristianmurua.18@gmail.com",
+      "telefono": 3544400372,
+      "contrasena": "12345678",
+      "id_rol": 1,
+      "id": "Ov7bA0K7yvI"
+    }
+  ],
+  "roles": [
+    {
+      "id": "0",
+      "nombre": "Administrador"
+    },
+    {
+      "id": "1",
+      "nombre": "Estándar"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
