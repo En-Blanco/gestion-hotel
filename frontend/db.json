@@ -144,6 +144,15 @@
       "checkout": "2026-12-27",
       "estado": "Confirmada",
       "id": "ZBRFuxslCJE"
+    },
+    {
+      "dni": "35674639",
+      "numero": 101,
+      "fecha_reserva": "2026-09-22",
+      "checkin": "2026-12-01",
+      "checkout": "2026-12-05",
+      "estado": "Confirmada",
+      "id": "erVfDG160hw"
     }
   ],
   "reserva_servicio": [
