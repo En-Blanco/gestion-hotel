@@ -40,6 +40,7 @@ export class DashboardUser implements OnInit {
   
   totalReserva = 0;
 
+
   constructor(
     private habitacionService: HabitacionService,
     private servicioService: ServicioService,
@@ -236,9 +237,13 @@ export class DashboardUser implements OnInit {
 
   }
 
+  const usuarioLogueado = JSON.parse(
+  localStorage.getItem('usuarioLogueado')!
+  );
+  
   const reserva: Reserva = {
 
-    dni: '12345678', //dni: this.usuarioLogueado.dni
+    dni: usuarioLogueado.dni.toString(), //dni: '12345678'
     numero:
       this.habitacionSeleccionada.numero,
 
