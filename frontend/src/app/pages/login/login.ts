@@ -18,7 +18,6 @@ import { LoginService } from '../../services/login';
 })
 export class Login {
 
-
   loginForm = new FormGroup({
     correo: new FormControl('', [
       Validators.required,
@@ -36,8 +35,6 @@ export class Login {
     private loginService: LoginService
   ) {}
 
-
-
   onSubmit(): void {
 
     if (this.loginForm.invalid) {
@@ -52,38 +49,34 @@ export class Login {
 
     this.loginService.login(datos).subscribe({
 
-      next: (respuesta) => {
+      next: (usuario) => {
 
-  if (respuesta.length === 0) {
-    this.loginForm.controls.correo.setErrors({ notFound: true });
-    return;
-  }
+        localStorage.setItem(
+          'usuarioLogueado',
+          JSON.stringify(usuario)
+        );
 
-  const usuario = respuesta[0];
-
-  if (usuario.contrasena !== datos.contrasena) {
-  this.loginForm.controls.password.setErrors({ incorrect: true });
-  return;
-}
-
-  localStorage.setItem(
-    'usuarioLogueado',
-    JSON.stringify(usuario)
-  );
-
-  if (usuario.id_rol === 1) {
-    this.router.navigate(['/dashboard-user']);
-  }
-
-  if (usuario.id_rol === 0) {
-    this.router.navigate(['/dashboard-admin']);
-  }
-},
+        if (usuario.id_rol === 1) {
+          this.router.navigate(['/dashboard-user']);
+        } else if (usuario.id_rol === 0) {
+          this.router.navigate(['/dashboard-admin']);
+        }
+      },
 
       error: (error) => {
-        this.loginForm.setErrors({ 'error': 'Error al iniciar sesión. Intente de nuevo' });
-      }
 
+        if (error.status === 400 || error.status === 401) {
+          this.loginForm.controls.password.setErrors({
+            incorrect: true
+          });
+        } else {
+          this.loginForm.setErrors({
+            error: true
+          });
+        }
+
+        console.error('Error al iniciar sesión:', error);
+      }
     });
   }
 }
