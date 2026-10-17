@@ -1,7 +1,8 @@
 export interface LoginResponse {
-  id: string;
-  dni: number;
+  id: number;
   correo: string;
-  contrasena: string;
+  nombre: string;
+  apellido: string;
+  dni: string;
   id_rol: number;
 }

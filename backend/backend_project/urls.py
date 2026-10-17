@@ -7,4 +7,5 @@ urlpatterns = [
     path('api/habitaciones/', include('habitaciones.urls')),
     path('api/reservas/', include('reservas.urls')),
     path('api/servicios/', include('servicios.urls')),
+    path('api/usuarios/', include('usuarios.urls')),
 ]
