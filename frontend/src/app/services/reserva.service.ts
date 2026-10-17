@@ -10,7 +10,7 @@ export class ReservaService {
 
   private http = inject(HttpClient);
 
-  private apiUrl = 'http://localhost:3000/reservas';
+  private apiUrl = 'http://127.0.0.1:8000/api/reservas/';
 
   getReservas(): Observable<Reserva[]> {
     return this.http.get<Reserva[]>(this.apiUrl);
