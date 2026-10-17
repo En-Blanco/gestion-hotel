@@ -4,6 +4,8 @@ from .models import Habitacion
 
 class HabitacionSerializer(serializers.ModelSerializer):
 
+    precio=serializers.FloatField()
+    
     class Meta:
         model = Habitacion
-        fields = '_all_'
+        fields = '__all__'
