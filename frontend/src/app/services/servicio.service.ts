@@ -10,7 +10,7 @@ export class ServicioService {
 
   private http = inject(HttpClient);
 
-  private apiUrl = 'http://localhost:3000/servicios';
+  private apiUrl = 'http://localhost:8000/api/servicios/';
 
   getServicios(): Observable<Servicio[]> {
     return this.http.get<Servicio[]>(this.apiUrl);

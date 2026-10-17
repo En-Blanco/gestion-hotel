@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 
 import { ChangeDetectorRef } from '@angular/core';
 
+
 @Component({
   selector: 'app-dashboard-user',
   imports: [DashboardHeader, Footer, CommonModule, FormsModule],
@@ -34,7 +35,7 @@ export class DashboardUser implements OnInit {
 
   habitacionSeleccionada: Habitacion | null = null;
   reservaCreada: Reserva | null = null;
-
+  
   fechaCheckIn = '';
   fechaCheckOut = '';
   
@@ -164,7 +165,7 @@ export class DashboardUser implements OnInit {
     const reservasHabitacion =
       this.reservas.filter(
         reserva =>
-          reserva.numero === habitacion.numero
+          reserva.habitacion === habitacion.numero
       );
 
     return !reservasHabitacion.some(
@@ -203,6 +204,7 @@ export class DashboardUser implements OnInit {
     this.serviciosSeleccionados.forEach(servicio => {
 
       total += servicio.precio;
+
 
     });
 
@@ -244,7 +246,7 @@ export class DashboardUser implements OnInit {
   const reserva: Reserva = {
 
     dni: usuarioLogueado.dni.toString(), //dni: '12345678'
-    numero:
+    habitacion:
       this.habitacionSeleccionada.numero,
 
     fecha_reserva:
@@ -254,8 +256,8 @@ export class DashboardUser implements OnInit {
 
     checkin: this.fechaCheckIn,
     checkout: this.fechaCheckOut,
-    estado: 'Confirmada'
-
+    estado: 'Confirmada',
+    total: this.totalReserva
   };
 
   this.reservaService
@@ -272,9 +274,9 @@ export class DashboardUser implements OnInit {
           this.reservaServicioService
             .crearRelacion({
 
-              id_reserva: data.id!,
+              reserva: data.id!,
 
-              id_servicio:
+              servicio:
                 servicio.id_servicio
 
             })
