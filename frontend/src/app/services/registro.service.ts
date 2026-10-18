@@ -9,13 +9,13 @@ import { Rol } from '../models/rol';
 export class RegistroService {
 
     private http = inject(HttpClient);
-    private apiUrl = 'http://localhost:3000';
+    private apiUrl = 'http://localhost:8000/api/usuarios';
 
-    getRolUsuario(nombre: string): Observable<Rol> {
-        return this.http.get<Rol>(`${this.apiUrl}/roles?nombre=${nombre}`);
+    getRolUsuario(): Observable<Rol[]> {
+        return this.http.get<Rol[]>(`${this.apiUrl}/roles/`);
     }
 
     crearUsuario(usuario: Usuario): Observable<Usuario> {
-        return this.http.post<Usuario>(`${this.apiUrl}/usuarios`, usuario);
+        return this.http.post<Usuario>(`${this.apiUrl}/registro/`, usuario);
     }
 }

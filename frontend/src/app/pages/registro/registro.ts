@@ -71,9 +71,10 @@ export class Registro implements OnInit {
   },{ validators: validadorContraseñasIguales });
 
   obtenerIdRol(): void {
-    this.RegistroService.getRolUsuario('Estándar').subscribe({
-      next: (rol) => {
-        this.idRolEstandar = rol.id;
+    this.RegistroService.getRolUsuario().subscribe({
+      next: (roles) => {
+        const rol = roles.find(r => r.nombre === 'Estándar');
+        this.idRolEstandar = rol?.id ?? null;
       },
       error: (err) => {
         console.error('Error al obtener los roles:', err);
@@ -82,17 +83,23 @@ export class Registro implements OnInit {
   }
 
   onSubmit(event: Event): void {
+
+    if (this.idRolEstandar === null) {
+      console.error('No se pudo obtener el ID del rol estándar.');
+      return;
+    }
+
     if (this.registroForm.valid)
     {
       const form = this.registroForm.getRawValue();
       const usuario: Usuario = {
-      dni: Number(form.dni!.replace(/\./g, '')),
+      dni: form.dni!.replace(/\./g, ''),
       nombre: form.nombre!,
       apellido: form.apellido!,
       correo: form.correo!,
-      telefono: Number(form.telefono!),
+      telefono: form.telefono!,
       contrasena: form.contrasena1!,
-      id_rol: this.idRolEstandar ?? 1
+      id_rol: this.idRolEstandar
       };
 
       this.RegistroService.crearUsuario(usuario).subscribe({

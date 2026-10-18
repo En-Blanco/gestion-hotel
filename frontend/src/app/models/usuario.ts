@@ -1,9 +1,9 @@
 export interface Usuario {
-    dni: number,
+    dni: string,
     nombre: string,
     apellido: string,
     correo: string,
-    telefono: number,
+    telefono: string,
     contrasena: string,
     id_rol: number
 }
