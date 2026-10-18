@@ -1,21 +1,20 @@
 from django.db import models
-from django.contrib.auth.models import User
 
+class Rol(models.Model):
+    
+    id = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=50)
 
-class PerfilUsuario(models.Model):
-    ROLES = [
-        (0, 'Administrador'),
-        (1, 'Cliente'),
-    ]
+    def __str__(self): return self.nombre
 
-    usuario = models.OneToOneField(
-        User,
-        on_delete=models.CASCADE,
-        related_name='perfil'
-    )
-    dni = models.CharField(max_length=20, unique=True)
-    telefono = models.CharField(max_length=30, blank=True)
-    rol = models.IntegerField(choices=ROLES, default=1)
+class Usuario(models.Model):
 
-    def __str__(self):
-        return f"{self.usuario.username} - {self.get_rol_display()}"
+    dni = models.CharField(primary_key=True, max_length=8)
+    nombre = models.CharField(max_length=50)
+    apellido = models.CharField(max_length=50)
+    correo = models.EmailField(max_length=100)
+    telefono = models.CharField(max_length=20)
+    contrasena = models.CharField(max_length=100)
+    id_rol = models.ForeignKey(Rol,on_delete=models.CASCADE)
+
+    def __str__(self): return f"{self.nombre} ({self.id_rol})"
