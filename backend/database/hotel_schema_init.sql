@@ -41,3 +41,16 @@ VALUES
         '/sobre-nosotros/Ranieri_Marysol_foto.png',
         'https://github.com/Marysol-web'
     );
+
+
+-- ROLES DEL SISTEMA DE GESTION HOTELERA
+
+-- ID 1: Administrador
+-- ID 2: Usuario estándar
+
+INSERT INTO usuarios_rol (id, nombre)
+VALUES
+    (1, 'Administrador'),
+    (2, 'Estándar')
+ON DUPLICATE KEY UPDATE
+    nombre = VALUES(nombre);

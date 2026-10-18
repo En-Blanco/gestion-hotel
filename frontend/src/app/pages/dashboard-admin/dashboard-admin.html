@@ -14,6 +14,9 @@
             <a href="#reservas" class="sidebar-link">
                 <span>📋</span> Reservas
             </a>
+            <a href="#habitaciones" class="sidebar-link">
+                <span>🛏️</span> Habitaciones
+            </a>
             <a href="#servicios" class="sidebar-link">
                 <span>🛎️</span> Servicios
             </a>
@@ -235,6 +238,82 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+        </section>
+
+        <!-- HABITACIONES -->
+        <section class="tarjeta" id="habitaciones">
+            <div class="tarjeta-header">
+                <h2>Gestión de Habitaciones</h2>
+                <button type="button" class="btn-primario btn-pequeno" (click)="abrirFormularioNuevo()">
+                    + Nueva Habitación
+                </button>
+            </div>
+
+            @if (mostrarFormHabitacion) {
+                <div class="form-habitacion">
+                    <div class="form-grupo">
+                        <label>Número</label>
+                        <input type="number" [(ngModel)]="habitacionForm.numero" [disabled]="modoEdicion">
+                    </div>
+                    <div class="form-grupo">
+                        <label>Tipo</label>
+                        <input type="text" [(ngModel)]="habitacionForm.tipo">
+                    </div>
+                    <div class="form-grupo">
+                        <label>Precio</label>
+                        <input type="number" [(ngModel)]="habitacionForm.precio">
+                    </div>
+                    <div class="form-grupo">
+                        <label>Imagen (URL)</label>
+                        <input type="text" [(ngModel)]="habitacionForm.imagen">
+                    </div>
+                    <div class="form-grupo">
+                        <label>Estado</label>
+                        <select [(ngModel)]="habitacionForm.estado">
+                            <option value="Activa">Activa</option>
+                            <option value="Inactiva">Inactiva</option>
+                        </select>
+                    </div>
+                    <div class="form-acciones">
+                        <button type="button" class="btn-primario btn-pequeno" (click)="guardarHabitacion()">
+                            Guardar
+                        </button>
+                        <button type="button" class="btn-tabla btn-cancelar" (click)="cancelarFormulario()">
+                            Cancelar
+                        </button>
+                    </div>
+                </div>
+            }
+
+            <div class="servicios-admin-lista">
+                @for (habitacion of habitaciones; track habitacion.numero) {
+                    <div class="servicio-admin-item">
+                        <div class="servicio-admin-info">
+                            <h3>🛏️ Habitación {{ habitacion.numero }} — {{ habitacion.tipo }}</h3>
+                            <p>Precio: <strong>${{ habitacion.precio }}</strong></p>
+                        </div>
+                        <div class="servicio-admin-acciones">
+                            @if (habitacion.estado === 'Activa') {
+                                <span class="badge-activo">Activa</span>
+                            } @else {
+                                <span class="badge-inactivo">Inactiva</span>
+                            }
+                            <button type="button" class="btn-tabla btn-editar" (click)="abrirFormularioEdicion(habitacion)">
+                                Editar
+                            </button>
+                            @if (habitacion.estado === 'Activa') {
+                                <button type="button" class="btn-tabla btn-cancelar" (click)="toggleEstadoHabitacion(habitacion)">
+                                    Desactivar
+                                </button>
+                            } @else {
+                                <button type="button" class="btn-tabla btn-activar" (click)="toggleEstadoHabitacion(habitacion)">
+                                    Activar
+                                </button>
+                            }
+                        </div>
+                    </div>
+                }
             </div>
         </section>
 
