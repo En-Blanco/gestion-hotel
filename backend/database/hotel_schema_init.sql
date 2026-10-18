@@ -54,3 +54,18 @@ VALUES
     (2, 'Estándar')
 ON DUPLICATE KEY UPDATE
     nombre = VALUES(nombre);
+
+-- Usuario ADMIN
+
+INSERT INTO
+	usuarios_usuario (dni, nombre, apellido, correo, telefono, contrasena, id_rol_id)
+VALUES
+	(
+		'12312312',
+        'Carlos',
+        'Perez',
+        'admin@mail.com',
+        '3510000000',
+        '12312312',
+        1
+    );
