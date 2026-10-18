@@ -1,12 +1,14 @@
-from django.contrib.auth import authenticate, get_user_model
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Usuario, Rol
-from .serializers import UsuarioSerializer, RolSerializer
-from django.contrib.auth.hashers import check_password
-
-User = get_user_model()
+from django.shortcuts import get_object_or_404
+from .serializers import (
+    UsuarioSerializer,
+    RolSerializer,
+    UsuarioAdminSerializer,
+    ModificarRolSerializer
+)
 
 class RolView(APIView):
 
@@ -55,9 +57,7 @@ class LoginView(APIView):
             correo__iexact=correo
         ).first()
 
-        if usuario is None or not check_password(
-            contrasena, usuario.contrasena
-        ):
+        if usuario is None or usuario.contrasena != contrasena:
             return Response(
                 {'error': 'Correo o contraseña incorrectos.'},
                 status=status.HTTP_401_UNAUTHORIZED
@@ -73,4 +73,61 @@ class LoginView(APIView):
                 'rol': usuario.id_rol.nombre
             },
             status=status.HTTP_200_OK
+        )
+
+class UsuariosView(APIView):
+
+    def get(self, request):
+        usuarios = Usuario.objects.select_related(
+            'id_rol'
+        ).order_by('apellido', 'nombre')
+
+        serializer = UsuarioAdminSerializer(
+            usuarios,
+            many=True
+        )
+
+        return Response(
+            serializer.data,
+            status=status.HTTP_200_OK
+        )
+
+class ModificarRolView(APIView):
+
+    def patch(self, request, dni):
+        usuario = get_object_or_404(
+            Usuario,
+            dni=dni
+        )
+
+        serializer = ModificarRolSerializer(
+            data=request.data
+        )
+
+        if serializer.is_valid():
+            usuario.id_rol = serializer.validated_data['id_rol']
+            usuario.save(update_fields=['id_rol'])
+
+            return Response(
+                UsuarioAdminSerializer(usuario).data,
+                status=status.HTTP_200_OK
+            )
+        else:
+            return Response(
+                serializer.errors,
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+class EliminarUsuarioView(APIView):
+
+    def delete(self, request, dni):
+        usuario = get_object_or_404(
+            Usuario,
+            dni=dni
+        )
+
+        usuario.delete()
+
+        return Response(
+            status=status.HTTP_204_NO_CONTENT
         )
