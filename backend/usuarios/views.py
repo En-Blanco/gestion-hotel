@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Usuario, Rol
 from .serializers import UsuarioSerializer, RolSerializer
+from django.contrib.auth.hashers import check_password
 
 User = get_user_model()
 
@@ -50,42 +51,26 @@ class LoginView(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-        usuario = User.objects.filter(email__iexact=correo).first()
+        usuario = Usuario.objects.filter(
+            correo__iexact=correo
+        ).first()
 
-        if usuario is None:
+        if usuario is None or not check_password(
+            contrasena, usuario.contrasena
+        ):
             return Response(
                 {'error': 'Correo o contraseña incorrectos.'},
                 status=status.HTTP_401_UNAUTHORIZED
-            )
-
-        usuario_autenticado = authenticate(
-            request,
-            username=usuario.username,
-            password=contrasena
-        )
-
-        if usuario_autenticado is None:
-            return Response(
-                {'error': 'Correo o contraseña incorrectos.'},
-                status=status.HTTP_401_UNAUTHORIZED
-            )
-
-        try:
-            perfil = usuario_autenticado.perfil
-        except User.perfil.RelatedObjectDoesNotExist:
-            return Response(
-                {'error': 'El usuario no tiene un perfil asignado.'},
-                status=status.HTTP_403_FORBIDDEN
             )
 
         return Response(
             {
-                'id': usuario_autenticado.id,
-                'correo': usuario_autenticado.email,
-                'nombre': usuario_autenticado.first_name,
-                'apellido': usuario_autenticado.last_name,
-                'dni': perfil.dni,
-                'id_rol': perfil.rol
+                'dni': usuario.dni,
+                'correo': usuario.correo,
+                'nombre': usuario.nombre,
+                'apellido': usuario.apellido,
+                'id_rol': usuario.id_rol_id,
+                'rol': usuario.id_rol.nombre
             },
             status=status.HTTP_200_OK
         )
