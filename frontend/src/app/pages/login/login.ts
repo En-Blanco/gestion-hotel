@@ -56,9 +56,9 @@ export class Login {
           JSON.stringify(usuario)
         );
 
-        if (usuario.id_rol === 1) {
+        if (usuario.id_rol === 2) {
           this.router.navigate(['/dashboard-user']);
-        } else if (usuario.id_rol === 0) {
+        } else if (usuario.id_rol === 1) {
           this.router.navigate(['/dashboard-admin']);
         }
       },
