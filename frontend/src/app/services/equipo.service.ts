@@ -8,7 +8,7 @@ import { Equipo } from '../models/equipo.interface';
 })
 export class EquipoService {
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:3000/equipo';
+  private apiUrl = 'http://localhost:8000/api/equipo/';
 
   getEquipo(): Observable<Equipo[]> {
     return this.http.get<Equipo[]>(this.apiUrl);

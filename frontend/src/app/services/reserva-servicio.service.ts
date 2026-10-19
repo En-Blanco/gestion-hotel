@@ -11,7 +11,7 @@ export class ReservaServicioService {
 
   private http = inject(HttpClient);
 
-  private apiUrl = 'http://localhost:3000/reserva_servicio';
+  private apiUrl = 'http://localhost:8000/api/reservas/servicios/';
 
   crearRelacion(
     relacion: ReservaServicio

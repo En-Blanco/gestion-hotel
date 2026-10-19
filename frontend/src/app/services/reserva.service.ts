@@ -7,10 +7,9 @@ import { Reserva } from '../models/reserva.interface';
   providedIn: 'root',
 })
 export class ReservaService {
-
   private http = inject(HttpClient);
 
-  private apiUrl = 'http://localhost:3000/reservas';
+  private apiUrl = 'http://127.0.0.1:8000/api/reservas/';
 
   getReservas(): Observable<Reserva[]> {
     return this.http.get<Reserva[]>(this.apiUrl);
@@ -20,4 +19,11 @@ export class ReservaService {
     return this.http.post<Reserva>(this.apiUrl, reserva);
   }
 
+  actualizarReserva(id: number, reserva: Partial<Reserva>): Observable<Reserva> {
+    return this.http.patch<Reserva>(`${this.apiUrl}${id}/`, reserva);
+  }
+
+  eliminarReserva(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}${id}/`);
+  }
 }
