@@ -29,14 +29,8 @@ function validadorContraseñasIguales(form: any) {
   styleUrl: './registro.css',
   templateUrl: './registro.html',
 })
-export class Registro implements OnInit {
+export class Registro {
   constructor(private RegistroService:RegistroService, private router: Router){}
-
-  idRolEstandar: number | null = null;
-
-  ngOnInit(): void {
-    this.obtenerIdRol();
-  }
 
   registroForm = new FormGroup({
     dni: new FormControl('', [
@@ -70,24 +64,7 @@ export class Registro implements OnInit {
     ])
   },{ validators: validadorContraseñasIguales });
 
-  obtenerIdRol(): void {
-    this.RegistroService.getRolUsuario().subscribe({
-      next: (roles) => {
-        const rol = roles.find(r => r.nombre === 'Estándar');
-        this.idRolEstandar = rol?.id ?? null;
-      },
-      error: (err) => {
-        console.error('Error al obtener los roles:', err);
-      }
-    });
-  }
-
   onSubmit(event: Event): void {
-
-    if (this.idRolEstandar === null) {
-      console.error('No se pudo obtener el ID del rol estándar.');
-      return;
-    }
 
     if (this.registroForm.valid)
     {
@@ -98,8 +75,7 @@ export class Registro implements OnInit {
       apellido: form.apellido!,
       correo: form.correo!,
       telefono: form.telefono!,
-      contrasena: form.contrasena1!,
-      id_rol: this.idRolEstandar
+      contrasena: form.contrasena1!
       };
 
       this.RegistroService.crearUsuario(usuario).subscribe({
