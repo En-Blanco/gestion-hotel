@@ -1,28 +1,31 @@
-
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from django.contrib.auth.hashers import check_password
-
 from .models import Usuario, Rol
-from .serializers import RegistroSerializer, RolSerializer
 from django.shortcuts import get_object_or_404
-from .serializers import UsuarioAdminSerializer, ModificarRolSerializer
+from .serializers import (
+    RegistroSerializer,
+    RolSerializer,
+    UsuarioAdminSerializer,
+    ModificarRolSerializer
+)
 
 class RolView(APIView):
 
     def get(self, request):
-        roles = Rol.objects.all()
-        serializer = RolSerializer(roles, many=True)
-
-        return Response(
-            serializer.data,
-            status=status.HTTP_200_OK
-        )
-
+        try:
+            roles = Rol.objects.all()
+            serializer = RolSerializer(roles, many=True)
+            return Response(
+                serializer.data,
+                status=status.HTTP_200_OK
+            )
+        except:
+            return Response(
+                {"error": "no se completó la operación"}, status=status.HTTP_204_NO_CONTENT
+      )
 
 class RegistroView(APIView):
-
     def post(self, request):
         serializer = RegistroSerializer(data=request.data)
 
@@ -38,7 +41,6 @@ class RegistroView(APIView):
             serializer.errors,
             status=status.HTTP_400_BAD_REQUEST
         )
-
 
 class LoginView(APIView):
 
@@ -56,9 +58,7 @@ class LoginView(APIView):
             correo__iexact=correo
         ).first()
 
-        if usuario is None or not check_password(
-            contrasena, usuario.contrasena
-        ):
+        if usuario is None or usuario.contrasena != contrasena:
             return Response(
                 {'error': 'Correo o contraseña incorrectos.'},
                 status=status.HTTP_401_UNAUTHORIZED
@@ -75,7 +75,6 @@ class LoginView(APIView):
             },
             status=status.HTTP_200_OK
         )
-
 
 class UsuariosView(APIView):
 
