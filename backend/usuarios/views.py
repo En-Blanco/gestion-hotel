@@ -1,45 +1,44 @@
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from django.contrib.auth.hashers import check_password
+
 from .models import Usuario, Rol
+from .serializers import RegistroSerializer, RolSerializer
 from django.shortcuts import get_object_or_404
-from .serializers import (
-    UsuarioSerializer,
-    RolSerializer,
-    UsuarioAdminSerializer,
-    ModificarRolSerializer
-)
+from .serializers import UsuarioAdminSerializer, ModificarRolSerializer
 
 class RolView(APIView):
 
     def get(self, request):
-        try:
-            roles = Rol.objects.all()
-            serializer = RolSerializer(roles, many=True)
-            return Response(
-                serializer.data,
-                status=status.HTTP_200_OK
-            )
-        except:
-            return Response(
-                {"error": "no se completó la operación"}, status=status.HTTP_204_NO_CONTENT
-      )
+        roles = Rol.objects.all()
+        serializer = RolSerializer(roles, many=True)
+
+        return Response(
+            serializer.data,
+            status=status.HTTP_200_OK
+        )
+
 
 class RegistroView(APIView):
 
     def post(self, request):
-        serializer = UsuarioSerializer(data=request.data)
+        serializer = RegistroSerializer(data=request.data)
+
         if serializer.is_valid():
             serializer.save()
+
             return Response(
-                serializer.data,
+                {'mensaje': 'Usuario creado correctamente.'},
                 status=status.HTTP_201_CREATED
             )
-        else:
-            return Response(
-                serializer.errors,
-                status=status.HTTP_400_BAD_REQUEST
+
+        return Response(
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST
         )
+
 
 class LoginView(APIView):
 
@@ -57,7 +56,9 @@ class LoginView(APIView):
             correo__iexact=correo
         ).first()
 
-        if usuario is None or usuario.contrasena != contrasena:
+        if usuario is None or not check_password(
+            contrasena, usuario.contrasena
+        ):
             return Response(
                 {'error': 'Correo o contraseña incorrectos.'},
                 status=status.HTTP_401_UNAUTHORIZED
@@ -74,6 +75,7 @@ class LoginView(APIView):
             },
             status=status.HTTP_200_OK
         )
+
 
 class UsuariosView(APIView):
 
