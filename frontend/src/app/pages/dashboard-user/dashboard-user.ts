@@ -41,6 +41,10 @@ export class DashboardUser implements OnInit {
   
   totalReserva = 0;
 
+  guardandoReserva = false;
+
+  errorReserva = '';
+
 
   constructor(
     private habitacionService: HabitacionService,
@@ -165,7 +169,8 @@ export class DashboardUser implements OnInit {
     const reservasHabitacion =
       this.reservas.filter(
         reserva =>
-          reserva.habitacion === habitacion.numero
+          reserva.habitacion === habitacion.numero &&
+          reserva.estado !== 'Cancelada'
       );
 
     return !reservasHabitacion.some(
@@ -216,6 +221,8 @@ export class DashboardUser implements OnInit {
 
     this.habitacionSeleccionada = habitacion;
 
+    this.errorReserva = '';
+
     this.calcularTotal();
 
   }
@@ -227,17 +234,32 @@ export class DashboardUser implements OnInit {
   }
 
   confirmarReserva(): void {
-  
-  if (!this.habitacionSeleccionada) {
-    console.log('CLICK RESERVA'); //borrar
 
-    alert(
-      'Debe seleccionar una habitación'
-    );
+  if (this.guardandoReserva) {
+    return;
+  }
+
+  if (!this.habitacionSeleccionada) {
+
+    this.errorReserva =
+      'Debe seleccionar una habitación';
 
     return;
 
   }
+
+  if (!this.estaDisponible(this.habitacionSeleccionada)) {
+
+    this.errorReserva =
+      'La habitación ya no está disponible en las fechas seleccionadas';
+
+    return;
+
+  }
+
+  this.guardandoReserva = true;
+
+  this.errorReserva = '';
 
   const usuarioLogueado = JSON.parse(
   localStorage.getItem('usuarioLogueado')!
@@ -267,6 +289,10 @@ export class DashboardUser implements OnInit {
     next: (data) => {
 
       this.reservaCreada = data;
+
+      this.reservas.push(data);
+
+      this.guardandoReserva = false;
 
       this.serviciosSeleccionados.forEach(
         servicio => {
@@ -312,6 +338,24 @@ export class DashboardUser implements OnInit {
       console.log(
         'mostrarComprobante:',
         this.mostrarComprobante
+      );
+
+    },
+
+    error: (err) => {
+
+      this.guardandoReserva = false;
+
+      this.errorReserva =
+        err.error?.non_field_errors?.[0] ??
+        err.error?.checkout?.[0] ??
+        'No se pudo crear la reserva';
+
+      this.cdr.detectChanges();
+
+      console.error(
+        'Error al crear reserva:',
+        err
       );
 
     }

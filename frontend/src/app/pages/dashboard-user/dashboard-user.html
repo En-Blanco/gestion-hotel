@@ -221,7 +221,14 @@
 
     </div>
 
-        <button type="button" class="btn-primario" (click)="confirmarReserva()">
+        @if (errorReserva) {
+            <div class="form-alert form-alert--error" role="alert" aria-live="assertive">
+                <span class="form-alert__icon" aria-hidden="true">!</span>
+                <p class="form-alert__text">{{ errorReserva }}</p>
+            </div>
+        }
+
+        <button type="button" class="btn-primario" (click)="confirmarReserva()" [disabled]="guardandoReserva">
 
             Confirmar Reserva
 
