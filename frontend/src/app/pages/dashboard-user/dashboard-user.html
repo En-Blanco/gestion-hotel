@@ -31,6 +31,13 @@
 
             </div>
 
+            @if (errorFechas) {
+                <div class="form-alert form-alert--error" role="alert" aria-live="assertive">
+                    <span class="form-alert__icon" aria-hidden="true">!</span>
+                    <p class="form-alert__text">{{ errorFechas }}</p>
+                </div>
+            }
+
             <button type="button" class="btn-primario" (click)="buscarDisponibilidad()">
 
                 Buscar Disponibilidad

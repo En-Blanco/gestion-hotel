@@ -45,6 +45,8 @@ export class DashboardUser implements OnInit {
 
   errorReserva = '';
 
+  errorFechas = '';
+
 
   constructor(
     private habitacionService: HabitacionService,
@@ -136,13 +138,14 @@ export class DashboardUser implements OnInit {
       !this.fechaCheckOut
     ) {
 
-      alert(
-        'Debe seleccionar fecha de ingreso y egreso'
-      );
+      this.errorFechas =
+        'Debe seleccionar fecha de ingreso y egreso';
 
       return;
 
     }
+
+    this.errorFechas = '';
 
     this.habitacionesDisponibles =
       this.habitaciones.filter(
