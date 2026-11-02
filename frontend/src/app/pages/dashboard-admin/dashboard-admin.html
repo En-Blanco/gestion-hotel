@@ -28,7 +28,7 @@
     <section class="tarjeta" id="metricas">
       <div class="tarjeta-header">
         <h2>Métricas del Sistema</h2>
-        <span class="periodo-label">Mayo 2026</span>
+        <span class="periodo-label">Noviembre 2026</span>
       </div>
 
       <div class="metricas-grid">
@@ -329,102 +329,115 @@
     <section class="tarjeta" id="usuarios">
       <div class="tarjeta-header">
         <h2>Gestión de Usuarios</h2>
-        <button type="button" class="btn-primario btn-pequeno">+ Nuevo Usuario</button>
+        <button type="button" class="btn-primario btn-pequeno" (click)="abrirFormularioNuevoUsuario()">
+          + Nuevo Usuario
+        </button>
       </div>
+
+      @if (mostrarFormUsuario) {
+        <div class="form-habitacion">
+          <div class="form-grupo">
+            <label>DNI</label>
+            <input type="text" [(ngModel)]="usuarioForm.dni" [disabled]="modoEdicionUsuario">
+          </div>
+          <div class="form-grupo">
+            <label>Nombre</label>
+            <input type="text" [(ngModel)]="usuarioForm.nombre">
+          </div>
+          <div class="form-grupo">
+            <label>Apellido</label>
+            <input type="text" [(ngModel)]="usuarioForm.apellido">
+          </div>
+          <div class="form-grupo">
+            <label>Email</label>
+            <input type="email" [(ngModel)]="usuarioForm.correo">
+          </div>
+          <div class="form-grupo">
+            <label>Teléfono</label>
+            <input type="text" [(ngModel)]="usuarioForm.telefono">
+          </div>
+          <div class="form-grupo">
+            <label>Contraseña</label>
+            <input
+              type="password"
+              [(ngModel)]="usuarioForm.contrasena"
+              [placeholder]="modoEdicionUsuario ? 'Dejar vacío para no cambiar' : ''"
+            >
+          </div>
+          @if (errorUsuario) {
+            <p class="form-error">{{ errorUsuario }}</p>
+          }
+          <div class="form-acciones">
+            <button type="button" class="btn-primario btn-pequeno" (click)="guardarUsuario()">
+              Guardar
+            </button>
+            <button type="button" class="btn-tabla btn-cancelar" (click)="cancelarFormularioUsuario()">
+              Cancelar
+            </button>
+          </div>
+        </div>
+      }
 
       <div class="tabla-contenedor">
         <table class="tabla">
           <thead>
             <tr>
-              <th>#</th>
+              <th>DNI</th>
               <th>Nombre</th>
               <th>Email</th>
+              <th>Teléfono</th>
               <th>Rol</th>
               <th>Estado</th>
               <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Administrador General</td>
-              <td>admin@enblanco.com</td>
-              <td>
-                <select class="select-rol">
-                  <option selected>Admin</option>
-                  <option>User</option>
-                </select>
-              </td>
-              <td><span class="estado confirmada">Activo</span></td>
-              <td class="acciones">
-                <button type="button" class="btn-tabla btn-editar">Editar</button>
-                <button type="button" class="btn-tabla btn-cancelar">Eliminar</button>
-              </td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Juan García</td>
-              <td>juan.garcia@mail.com</td>
-              <td>
-                <select class="select-rol">
-                  <option>Admin</option>
-                  <option selected>User</option>
-                </select>
-              </td>
-              <td><span class="estado confirmada">Activo</span></td>
-              <td class="acciones">
-                <button type="button" class="btn-tabla btn-editar">Editar</button>
-                <button type="button" class="btn-tabla btn-cancelar">Eliminar</button>
-              </td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>María López</td>
-              <td>maria.lopez@mail.com</td>
-              <td>
-                <select class="select-rol">
-                  <option>Admin</option>
-                  <option selected>User</option>
-                </select>
-              </td>
-              <td><span class="estado pendiente">Inactivo</span></td>
-              <td class="acciones">
-                <button type="button" class="btn-tabla btn-editar">Editar</button>
-                <button type="button" class="btn-tabla btn-cancelar">Eliminar</button>
-              </td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Carlos Ruiz</td>
-              <td>carlos.ruiz@mail.com</td>
-              <td>
-                <select class="select-rol">
-                  <option>Admin</option>
-                  <option selected>User</option>
-                </select>
-              </td>
-              <td><span class="estado confirmada">Activo</span></td>
-              <td class="acciones">
-                <button type="button" class="btn-tabla btn-editar">Editar</button>
-                <button type="button" class="btn-tabla btn-cancelar">Eliminar</button>
-              </td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>Ana Martínez</td>
-              <td>ana.martinez@mail.com</td>
-              <td>
-                <select class="select-rol">
-                  <option>Admin</option>
-                  <option selected>User</option>
-                </select>
-              </td>
-              <td><span class="estado cancelada">Suspendido</span></td>
-              <td class="acciones">
-                <button type="button" class="btn-tabla btn-editar">Editar</button>
-                <button type="button" class="btn-tabla btn-cancelar">Eliminar</button>
-              </td>
-            </tr>
+            @for (usuario of usuarios; track usuario.dni) {
+              <tr>
+                <td>{{ usuario.dni }}</td>
+                <td>{{ usuario.nombre }} {{ usuario.apellido }}</td>
+                <td>{{ usuario.correo }}</td>
+                <td>{{ usuario.telefono }}</td>
+                <td>{{ usuario.rol }}</td>
+                <td>
+                  <span
+                    class="estado"
+                    [class.confirmada]="usuario.estado === 'Activo'"
+                    [class.pendiente]="usuario.estado !== 'Activo'"
+                  >
+                    {{ usuario.estado }}
+                  </span>
+                </td>
+                <td class="acciones">
+                  <button type="button" class="btn-tabla btn-editar" (click)="abrirFormularioEdicionUsuario(usuario)">
+                    Editar
+                  </button>
+                  @if (usuario.estado === 'Activo') {
+                    <button type="button" class="btn-tabla btn-cancelar" (click)="toggleEstadoUsuario(usuario)">
+                      Desactivar
+                    </button>
+                  } @else {
+                    <button type="button" class="btn-tabla btn-activar" (click)="toggleEstadoUsuario(usuario)">
+                      Activar
+                    </button>
+                  }
+                  <button
+                    type="button"
+                    class="btn-tabla btn-cancelar"
+                    (click)="eliminarUsuario(usuario)"
+                    [disabled]="usuario.dni === dniLogueado"
+                  >
+                    Eliminar
+                  </button>
+                </td>
+              </tr>
+            } @empty {
+              <tr>
+                <td colspan="7" style="text-align: center; padding: 1.5rem">
+                  No hay usuarios registrados en la base de datos.
+                </td>
+              </tr>
+            }
           </tbody>
         </table>
       </div>

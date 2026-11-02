@@ -7,6 +7,7 @@ from .serializers import (
     RegistroSerializer,
     RolSerializer,
     UsuarioAdminSerializer,
+    UsuarioAdminEditarSerializer,
     ModificarRolSerializer
 )
 
@@ -119,7 +120,38 @@ class ModificarRolView(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-class EliminarUsuarioView(APIView):
+class UsuarioDetalleView(APIView):
+
+    def patch(self, request, dni):
+        usuario = get_object_or_404(
+            Usuario,
+            dni=dni
+        )
+
+        datos = request.data.copy()
+
+        # Si la contraseña llega vacía no se modifica
+        if not datos.get('contrasena'):
+            datos.pop('contrasena', None)
+
+        serializer = UsuarioAdminEditarSerializer(
+            usuario,
+            data=datos,
+            partial=True
+        )
+
+        if serializer.is_valid():
+            serializer.save()
+
+            return Response(
+                UsuarioAdminSerializer(usuario).data,
+                status=status.HTTP_200_OK
+            )
+
+        return Response(
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST
+        )
 
     def delete(self, request, dni):
         usuario = get_object_or_404(

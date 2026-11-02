@@ -46,6 +46,11 @@ class RegistroSerializer(serializers.ModelSerializer):
         )
 
 class UsuarioAdminSerializer(serializers.ModelSerializer):
+    rol = serializers.CharField(
+        source='id_rol.nombre',
+        read_only=True
+    )
+
     class Meta:
         model = Usuario
         fields = [
@@ -54,8 +59,23 @@ class UsuarioAdminSerializer(serializers.ModelSerializer):
             'apellido',
             'correo',
             'telefono',
-            'id_rol'
+            'id_rol',
+            'rol'
         ]
+
+class UsuarioAdminEditarSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Usuario
+        fields = [
+            'nombre',
+            'apellido',
+            'correo',
+            'telefono',
+            'contrasena'
+        ]
+        extra_kwargs = {
+            'contrasena': {'write_only': True, 'required': False}
+        }
 
 class ModificarRolSerializer(serializers.Serializer):
     id_rol = serializers.PrimaryKeyRelatedField(

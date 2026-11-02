@@ -5,7 +5,7 @@ from .views import (
     RolView,
     UsuariosView,
     ModificarRolView,
-    EliminarUsuarioView
+    UsuarioDetalleView
 )
 
 urlpatterns = [
@@ -15,5 +15,5 @@ urlpatterns = [
 
     path('admin/', UsuariosView.as_view(), name='listar-usuarios'),
     path('admin/<str:dni>/rol/', ModificarRolView.as_view(), name='modificar-rol'),
-    path('admin/<str:dni>/', EliminarUsuarioView.as_view(), name='eliminar-usuario'),
+    path('admin/<str:dni>/', UsuarioDetalleView.as_view(), name='detalle-usuario'),
 ]
